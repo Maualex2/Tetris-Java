@@ -7,7 +7,7 @@ public class Fenetre extends JFrame{
     JPanel Page;
     public Fenetre(){
         super("Tetris");
-        setSize(800,900);
+        setSize(800,900);// c'est pas bien recommence
         setLocation(460, 140);
         //Terrain de jeu
         Terrain= new JPanel();
