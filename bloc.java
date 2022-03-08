@@ -1,10 +1,10 @@
 import java.awt.Color;
-public class bloc {
-    String forme;
+public class Bloc {
     Color couleur;
-    int vide;
+    boolean dernierbloc;
 
-    public bloc(String forme){
-        this.forme=forme;
+    public Bloc(Color c, boolean d){
+        couleur=c;
+        dernierbloc= d;
     }
 }
