@@ -7,8 +7,11 @@ public class Fenetre extends JFrame{
     JPanel Page;
     public Fenetre(){
         super("Tetris");
-        setSize(800,900);// c'est pas bien recommence
+        setSize(800,900);
         setLocation(460, 140);
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         //Terrain de jeu
         Terrain= new JPanel();
         Terrain.setLayout(null);
@@ -21,7 +24,7 @@ public class Fenetre extends JFrame{
         Interface.setBounds(440,50,300,800);
         Interface.setBackground(Color.red);
 
-        //Fenetre entière
+        //Fenetre entiere
         Page= new JPanel();
         Page.setLayout(null);
         Page.setBounds(0,0,800,900);
@@ -30,9 +33,8 @@ public class Fenetre extends JFrame{
         Page.add(Interface);
         this.add(Page);
 
-
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
 
     }
 }
