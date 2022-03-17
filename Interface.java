@@ -5,8 +5,10 @@ public class Interface extends JFrame{
     JPanel Terrain;
     JPanel GraphiqueListedAttente;
     JPanel Page;
-    public Interface(){
+    TerrainDeJeu Jeu;
+    public Interface(TerrainDeJeu jeu){
         super("Tetris");
+        Jeu=jeu;
         setSize(800,900);
         setLocation(460, 140);
         
@@ -19,7 +21,7 @@ public class Interface extends JFrame{
         Terrain.setBackground(Color.black);
 
         //GraphiqueListedAttente
-        GraphiqueListedAttente= new JPanel();
+        GraphiqueListedAttente= new GraphiqueListedAttente(jeu);
         GraphiqueListedAttente.setLayout(null);
         GraphiqueListedAttente.setBounds(440,50,300,800);
         GraphiqueListedAttente.setBackground(Color.red);
