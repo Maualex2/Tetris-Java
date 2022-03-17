@@ -1,11 +1,11 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
-public class Fenetre extends JFrame{
+public class Interface extends JFrame{
     JPanel Terrain;
-    JPanel Interface;
+    JPanel GraphiqueListedAttente;
     JPanel Page;
-    public Fenetre(){
+    public Interface(){
         super("Tetris");
         setSize(800,900);
         setLocation(460, 140);
@@ -18,11 +18,11 @@ public class Fenetre extends JFrame{
         Terrain.setBounds(20,50,400,800);
         Terrain.setBackground(Color.black);
 
-        //Interface
-        Interface= new JPanel();
-        Interface.setLayout(null);
-        Interface.setBounds(440,50,300,800);
-        Interface.setBackground(Color.red);
+        //GraphiqueListedAttente
+        GraphiqueListedAttente= new JPanel();
+        GraphiqueListedAttente.setLayout(null);
+        GraphiqueListedAttente.setBounds(440,50,300,800);
+        GraphiqueListedAttente.setBackground(Color.red);
 
         //Fenetre entiere
         Page= new JPanel();
@@ -30,7 +30,7 @@ public class Fenetre extends JFrame{
         Page.setBounds(0,0,800,900);
         Page.setBackground(Color.yellow);
         Page.add(Terrain);
-        Page.add(Interface);
+        Page.add(GraphiqueListedAttente);
         this.add(Page);
 
         setVisible(true);
