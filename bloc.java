@@ -7,6 +7,6 @@ public class Bloc {
     public Bloc(Color c, boolean d, boolean v){
         couleur=c;
         dernierbloc= d;
-        vide=false;
+        vide=false; //d
     }
 }
