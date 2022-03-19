@@ -1,6 +1,3 @@
-public class forme {
-
-    public forme(){
-        //TODO
-    }
+public class Forme {
+    
 }
