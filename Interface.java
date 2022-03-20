@@ -1,11 +1,15 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import java.awt.Color;
 public class Interface extends JFrame{
     JPanel Terrain;
     JPanel GraphiqueListedAttente;
     JPanel Page;
     TerrainDeJeu Jeu;
+    JButton Start;
     public Interface(TerrainDeJeu jeu){
         super("Tetris");
         Jeu=jeu;
@@ -25,6 +29,9 @@ public class Interface extends JFrame{
         GraphiqueListedAttente.setLayout(null);
         GraphiqueListedAttente.setBounds(440,50,300,800);
         GraphiqueListedAttente.setBackground(Color.red);
+        Start= new JButton("Start");
+        Start.setBounds(50,600,100,50);
+        GraphiqueListedAttente.add(Start);
 
         //Fenetre entiere
         Page= new JPanel();

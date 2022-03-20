@@ -4,12 +4,12 @@ import java.awt.Color;
 public class TerrainDeJeu {
     public Bloc[][] Terrain;
     public int points;
-    public LinkedList<Forme> FormeJouee;
-    public LinkedList<Forme[]> FormeStandard;
-    public Forme FormeEnAttente;
-    public Forme EnJeu;
+    public LinkedList<forme> FormeJouee;
+    public LinkedList<forme[]> FormeStandard;
+    public forme FormeEnAttente;
+    public forme EnJeu;
 
-    public TerrainDeJeu(LinkedList<Forme[]> FormeStandard){
+    public TerrainDeJeu(LinkedList<forme[]> FormeStandard){
         this.FormeStandard=FormeStandard;
         Terrain = new Bloc[21][13];
     }
