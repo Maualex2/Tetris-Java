@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.awt.Color;
 
 public class TerrainDeJeu {
-    public Bloc[][] Terrain;
+    public bloc[][] Terrain;
     public int points;
     public LinkedList<forme> FormeJouee;
     public LinkedList<forme[]> FormeStandard;
@@ -11,7 +11,7 @@ public class TerrainDeJeu {
 
     public TerrainDeJeu(LinkedList<forme[]> FormeStandard){
         this.FormeStandard=FormeStandard;
-        Terrain = new Bloc[21][13];
+        Terrain = new bloc[21][13];
     }
 
     public void LigneComplete(){ // parcourt le tableau et compte les blocs
@@ -36,7 +36,7 @@ public class TerrainDeJeu {
             for (int j = 0; j < Terrain[i].length; j++) { // Colonne
                 if(!Terrain[i][j].dernierbloc){
                     Terrain[i-1][j]=Terrain[i][j];
-                    Terrain[i][j]= new Bloc(Color.BLACK, false, true);
+                    Terrain[i][j]= new bloc(Color.BLACK, false, true);
                 }
             }
         }
@@ -67,7 +67,7 @@ public class TerrainDeJeu {
                 for (int j = 0; j < Terrain[i].length; j++) {
                     if(Terrain[i][j].dernierbloc==true ){
                     Terrain[i][j+1]=Terrain[i][j];
-                    Terrain[i][j]=new Bloc(Color.black,false,true);
+                    Terrain[i][j]=new bloc(Color.black,false,true);
                     }
                 }
             }
@@ -93,7 +93,7 @@ public class TerrainDeJeu {
                 for (int j = 0; j < Terrain[i].length; j++) {
                     if(Terrain[i][j].dernierbloc==true ){
                     Terrain[i][j-1]=Terrain[i][j];
-                    Terrain[i][j]=new Bloc(Color.black,false,true);
+                    Terrain[i][j]=new bloc(Color.black,false,true);
                     }
                 }
             }
