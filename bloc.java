@@ -1,10 +1,10 @@
 import java.awt.Color;
-public class Bloc {
+public class bloc {
     Color couleur;
     boolean dernierbloc;
     boolean vide;
 
-    public Bloc(Color c, boolean d, boolean v){
+    public bloc(Color c, boolean d, boolean v){
         couleur=c;
         dernierbloc= d;
         vide=false; 

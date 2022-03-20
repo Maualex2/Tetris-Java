@@ -1,4 +1,4 @@
 import java.awt.Color;
-public class Z extends Forme{
+public class Z extends forme{
     
 }

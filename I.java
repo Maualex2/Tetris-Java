@@ -1,12 +1,10 @@
 import java.awt.Color;
-public class I extends Forme{
-    
-    public double [][]Coordonnees=new double [2][4];
-    public double [] origine = new double[2];
+public class I extends forme{
 
     public I (Color c){
         super (c);
-        Coordonnees={-1.5,0},{-0.5, 0},{0.5, 0},  {1.5, 0};
+        Coordonees= new double[4][2];
+        Coordonees={{5,0},{5, 0},{5, 0}, {5, 0}};
         origine={0, 0};
     }
 }
