@@ -1,6 +1,5 @@
 import javax.swing.*; 
 import java.awt.*; 
-import java.awt.event.*; 
 
 public class GraphiqueTerrain extends JPanel {
     public TerrainDeJeu TerrainJeu;
@@ -9,19 +8,26 @@ public class GraphiqueTerrain extends JPanel {
 		TerrainJeu = Terrain;
 		
 		setLayout(null);
-		setSize(133*2,232*2); //12*10+13 et 21*10+22
-		setLocation(0,0); 
-		setBackground(Color.cyan);
-		
+	setSize(120*3+1,210*3+1); 
+		setLocation(50,50); 
+	}	
+	
+	public void paint(Graphics g){ // les commentaires sont les formes finales, la c'est juste un test pour voir l'affichage
+
 		for (int i=0; i<12; i++){
 			for (int j=0; j<21; j++){
-				JPanel p = new JPanel();
-				p.setLayout(null);
-				p.setSize(10*2,10*2);
-				p.setLocation(((i+1)*11+1)*2,((j+1)*11+1)*2);
-				p.setBackground(Color.black); //p.setBackground(TerrainJeu.Terrain[i][j].couleur)?
-				add(p);
+				g.setColor(Color.BLACK); //TerrainJeu.Terrain[i][j].couleur
+				g.fillRect(i*30,j*30, 30, 30);
 			}
 		}
-	}		
+			
+		g.setColor(Color.CYAN);
+		for (int i=0; i<13; i++){
+			for (int j=0; j<22; j++){
+				g.drawLine(i*30,j*30, i*30, (j+1)*30);
+				g.drawLine(i*30,j*30, (i+1)*30, j*30);
+			}
+		}
+			
+	}	
 }

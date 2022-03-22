@@ -1,9 +1,9 @@
-import java.awt.Color;
+ import java.awt.Color;
 public class Main {
     public static void main(String[] args) {
         // création des formes utilisées
-        double []origine={0,0};
-        double [][]tab={{-1,1},{0,1},{1,1},{0,0}};
+        double []origine={0,0};                     // premère colonne abscisse, 2ème colonne ordonée
+        double [][]tab={{-1,1},{0,1},{1,1},{0,0}};  //idem pour les formes
         forme Tsimo= new forme(tab, origine,Color.RED);
 
         double [][]tabO={{-0.5,-0.5},{0.5,-0.5},{0.5,0.5},{0.5,-0.5}};

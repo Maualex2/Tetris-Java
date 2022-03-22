@@ -47,7 +47,7 @@ public class TerrainDeJeu {
     public void ajouterForme(){
 
     }
-    public void bougerDroite(){ //@Maualex2 c'est pas très optimisé car je fais 2 tour du tableau
+    /* public void bougerDroite(){ //@Maualex2 c'est pas très optimisé car je fais 2 tour du tableau
         boolean possible = true;
         for (int i = 0; i < Terrain[12].length; i++) { // @Maualex2 teste si la forme est sur le coté droit
             if (Terrain[i][12].dernierbloc==true) {
@@ -98,9 +98,11 @@ public class TerrainDeJeu {
                 }
             }
         }
-    }
+    } */
     public void descendre(){
-      // TODO document why this method is empty
+      EnJeu.descendre();//Il faut vérifier qu'il n'y a pas de bloc en bas 
+    
+
     }
     public void tourner(){
       // TODO document why this method is empty
