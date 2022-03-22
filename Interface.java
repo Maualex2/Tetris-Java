@@ -49,11 +49,7 @@ public class Interface extends JFrame implements ActionListener{
         Timer Chrono = new Timer(1000,this);
         Chrono.start();
 
-        affChrono = new JLabel();
-        affChrono.setBounds(50, 320, 100, 50);
-        affChrono.setForeground(new Color(245,0,242)); // rose
-        affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
-		GraphiqueListedAttente.add(affChrono);
+        
 
         //Fenetre entiere
         Page= new JPanel();
@@ -63,7 +59,13 @@ public class Interface extends JFrame implements ActionListener{
         Page.add(GraphiqueTerrain);
         Page.add(GraphiqueListedAttente);
         this.add(Page);
-      
+        
+        affChrono = new JLabel();
+        affChrono.setBounds(50, 320, 100, 50);
+        affChrono.setForeground(new Color(245,0,242)); // rose
+        affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
+		GraphiqueListedAttente.add(affChrono);
+
         setVisible(true);
 
     }
