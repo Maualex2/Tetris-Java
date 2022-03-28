@@ -1,10 +1,7 @@
 import java.awt.Color;
 
 public class L extends forme{
-    public int [][]Coordonees;
-    public int []origine;
-
-
+    
     public L(Color c){
         super(c);
         int [] temp={0,0};                  // premère colonne abscisse, 2ème colonne ordonée

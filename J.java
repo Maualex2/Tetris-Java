@@ -1,9 +1,6 @@
 import java.awt.Color;
 
 public class J extends forme{
-    public int [][]Coordonees;
-    public int []origine;
-
 
     public J(Color c){
         super(c);

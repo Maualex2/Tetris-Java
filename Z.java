@@ -1,8 +1,6 @@
 import java.awt.Color;
 
 public class Z extends forme{
-    public int [][]Coordonees;
-    public int []origine;
    
 
     public Z(Color c){
