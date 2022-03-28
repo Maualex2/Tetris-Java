@@ -11,7 +11,5 @@ public class Z extends forme{
         Coordonees=tab;
 
     }
-    public void descendre(){
-        origine[1]=origine[1]+1;
-    }
+    
 }

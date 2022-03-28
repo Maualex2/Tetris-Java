@@ -99,6 +99,23 @@ public class TerrainDeJeu {
             }
         }
     } */
+    public void bougerDroite(){
+        boolean libre=true;
+        try {
+            for (int i = 0; i < EnJeu.Coordonees.length; i++) {
+                    if(Terrain[EnJeu.Coordonees[i][0]+EnJeu.origine[0]+1][EnJeu.Coordonees[i][1]+EnJeu.origine[1]].vide==false){
+                        libre=false;
+                    }
+            }
+       } catch ( Exception e ) {
+          return; 
+       } finally {
+          if (libre){
+              EnJeu.droite();
+          }
+       }
+    }
+
     public void descendre(){
       EnJeu.descendre();//Il faut vérifier qu'il n'y a pas de bloc en bas 
     
