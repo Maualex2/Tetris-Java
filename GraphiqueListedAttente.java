@@ -9,7 +9,7 @@ public class GraphiqueListedAttente extends JPanel{
     
     public void paint(Graphics g){ // les commentaires sont les formes finales, la c'est juste un test pour voir l'affichage
         g.setColor(Color.black);
-        g.fillRect(0,0,300,800);
+        g.fillRect(0,0,250,210);
 
         //Jeu.FormeEnAttente.Coordonnees[][] 
          int [][]tab={{0,0},{1,0},{0,1},{1,1}};

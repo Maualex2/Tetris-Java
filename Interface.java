@@ -55,13 +55,14 @@ public class Interface extends JFrame implements ActionListener{
         Page= new JPanel();
         Page.setLayout(null);
         Page.setBounds(0,0,800,900);
-        Page.setBackground(Color.black);
+        //Page.setBackground(Color.black);
         Page.add(GraphiqueTerrain);
         Page.add(GraphiqueListedAttente);
         this.add(Page);
         
         affChrono = new JLabel();
-        affChrono.setBounds(50, 320, 100, 50);
+        affChrono.setBounds(50, 200, 100, 50);
+        affChrono.setBackground(Color.GREEN);
         affChrono.setForeground(new Color(245,0,242)); // rose
         affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
 		GraphiqueListedAttente.add(affChrono);
