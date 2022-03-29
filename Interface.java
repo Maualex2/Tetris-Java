@@ -42,14 +42,18 @@ public class Interface extends JFrame implements ActionListener{
     
         //Score
 		Score=new JLabel("score ici");  
-		Score.setBounds(50,250, 100, 50);  
+		Score.setBounds(50,500, 100, 50);  
 		GraphiqueListedAttente.add(Score);
 
         //Chrono
-        Timer Chrono = new Timer(1000,this);
-        Chrono.start();
-
+        Chrono = new Timer(1000,this);
         
+        affChrono = new JLabel("Temps :");
+        affChrono.setBounds(50, 500, 100, 50);
+        affChrono.setBackground(Color.GREEN);
+        affChrono.setForeground(new Color(245,0,242)); // rose
+        affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
+		GraphiqueListedAttente.add(affChrono);
 
         //Fenetre entiere
         Page= new JPanel();
@@ -59,23 +63,19 @@ public class Interface extends JFrame implements ActionListener{
         Page.add(GraphiqueTerrain);
         Page.add(GraphiqueListedAttente);
         this.add(Page);
-        
-        affChrono = new JLabel();
-        affChrono.setBounds(50, 200, 100, 50);
-        affChrono.setBackground(Color.GREEN);
-        affChrono.setForeground(new Color(245,0,242)); // rose
-        affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
-		GraphiqueListedAttente.add(affChrono);
-
         setVisible(true);
 
     }
     public void actionPerformed(ActionEvent e){
        if (e.getSource() == Start) {
 		   //démarrer le jeu
-        
-           iChrono++;
+           iChrono=0;
+           Chrono.start();
            affChrono.setText(String.valueOf(iChrono));
 		}
+        if(e.getSource()== Chrono){
+            iChrono++;
+            affChrono.setText(String.valueOf(iChrono));
+        }
     }
 }
