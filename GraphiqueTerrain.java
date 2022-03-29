@@ -8,7 +8,7 @@ public class GraphiqueTerrain extends JPanel {
 		TerrainJeu = Terrain;
 		
 		setLayout(null);
-	setSize(120*3+1,210*3+1); 
+		setSize(120*3+1,210*3+1); 
 		setLocation(50,50); 
 	}	
 	

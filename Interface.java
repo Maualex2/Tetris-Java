@@ -2,16 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Interface extends JFrame implements ActionListener{
+public class Interface extends JFrame implements ActionListener,KeyListener{
     JPanel GraphiqueTerrain;
     JPanel GraphiqueListedAttente;
     JPanel Page;
+    JPanel Stat;
     TerrainDeJeu Jeu;
-    JButton Start;
+    JButton Start; 
     JLabel Score; 
     int iChrono; 
     Timer Chrono; 
     JLabel affChrono; 
+    forme[] figure;
 
     public Interface(TerrainDeJeu jeu){
         super("Tetris");
@@ -28,32 +30,39 @@ public class Interface extends JFrame implements ActionListener{
         //GraphiqueListedAttente
         GraphiqueListedAttente= new GraphiqueListedAttente(jeu);
         GraphiqueListedAttente.setLayout(null);
-        GraphiqueListedAttente.setBounds(480,50,300,800);
+        GraphiqueListedAttente.setBounds(480,50,300,200);
         GraphiqueListedAttente.setBackground(Color.cyan);
-        
+
+        //Stat 
+        Stat = new JPanel();
+        Stat.setLayout(null);
+        Stat.setBounds(480,300,200,300);
+        Stat.setBackground(Color.cyan);
+
         //Bouton Start 
         Start= new JButton("Start");
-        Start.setBounds(50,600,100,50);
+        Stat.add(Start);
+        Start.setBounds(50,200,100,50);
         Start.setLayout(null);
         Start.setBackground(new Color(245,0,242)); // rose
         Start.setFont(new Font("Arial", Font.BOLD, 25));
         Start.addActionListener(this); 
-        GraphiqueListedAttente.add(Start);
+        
     
         //Score
 		Score=new JLabel("score ici");  
-		Score.setBounds(50,500, 100, 50);  
-		GraphiqueListedAttente.add(Score);
+		Score.setBounds(50,120, 100, 50);  
+		Stat.add(Score);
 
         //Chrono
         Chrono = new Timer(1000,this);
         
         affChrono = new JLabel("Temps :");
-        affChrono.setBounds(50, 500, 100, 50);
+        affChrono.setBounds(20, 50, 150, 50);
         affChrono.setBackground(Color.GREEN);
         affChrono.setForeground(new Color(245,0,242)); // rose
         affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
-		GraphiqueListedAttente.add(affChrono);
+		Stat.add(affChrono);
 
         //Fenetre entiere
         Page= new JPanel();
@@ -62,6 +71,7 @@ public class Interface extends JFrame implements ActionListener{
         //Page.setBackground(Color.black);
         Page.add(GraphiqueTerrain);
         Page.add(GraphiqueListedAttente);
+        Page.add(Stat);
         this.add(Page);
         setVisible(true);
 
@@ -71,11 +81,31 @@ public class Interface extends JFrame implements ActionListener{
 		   //démarrer le jeu
            iChrono=0;
            Chrono.start();
-           affChrono.setText(String.valueOf(iChrono));
+           affChrono.setText("Temps : "+String.valueOf(iChrono));
 		}
         if(e.getSource()== Chrono){
             iChrono++;
-            affChrono.setText(String.valueOf(iChrono));
+            affChrono.setText("Temps :"+String.valueOf(iChrono));
         }
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void keyPressed(KeyEvent e) {
+        char caractere = e.getKeyChar();
+        if(((int)caractere==81)||(int)caractere==113){
+            Jeu.EnJeu.gauche();
+        }
+        if(((int)caractere==68)||(int)caractere==100){
+            Jeu.EnJeu.droite();
+        }
+    }
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 }

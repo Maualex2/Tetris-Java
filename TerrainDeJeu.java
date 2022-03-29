@@ -5,13 +5,17 @@ public class TerrainDeJeu {
     public bloc[][] Terrain;
     public int points;
     public LinkedList<forme> FormeJouee;
-    public LinkedList<forme[]> FormeStandard;
+    public LinkedList<forme> FormeStandard;
     public forme FormeEnAttente;
     public forme EnJeu;
 
-    public TerrainDeJeu(LinkedList<forme[]> FormeStandard){
-        this.FormeStandard=FormeStandard;
+    public TerrainDeJeu(LinkedList<forme> FormeStandard){
         Terrain = new bloc[21][13];
+        points = 0;
+        FormeJouee = null;
+        this.FormeStandard = FormeStandard;
+        FormeEnAttente = this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size()));
+        EnJeu = this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size()));       
     }
 
     public void LigneComplete(){ // parcourt le tableau et compte les blocs
@@ -34,86 +38,59 @@ public class TerrainDeJeu {
     public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs qui ne sont pas fixes vers le bas à partir d'une ligne que l'on précise
         for (int i = ligne; i > 0 ; i--) { //ligne parcourt du bas du tableau jusqu'en haut
             for (int j = 0; j < Terrain[i].length; j++) { // Colonne
-                if(!Terrain[i][j].dernierbloc){
-                    Terrain[i-1][j]=Terrain[i][j];
-                    Terrain[i][j]= new bloc(Color.BLACK, false, true);
-                }
+                Terrain[i-1][j]=Terrain[i][j];
+                Terrain[i][j]= new bloc(Color.BLACK, false);
             }
         }
     }
-    public void GagnePerdu(){ //Définir la notion de Perdu et de gagner
 
+    public boolean perdu(){ //Définir la notion de perdu
+        boolean test=false;
+        int j=0;
+        while ((j< Terrain[1].length)&&(!test)){
+            if (Terrain[1][j].vide==false){
+                test=true;
+            }
+            j++;
+        }
+        return test;
     }
+    
     public void ajouterForme(){
+    }
 
-    }
-    /* public void bougerDroite(){ //@Maualex2 c'est pas très optimisé car je fais 2 tour du tableau
-        boolean possible = true;
-        for (int i = 0; i < Terrain[12].length; i++) { // @Maualex2 teste si la forme est sur le coté droit
-            if (Terrain[i][12].dernierbloc==true) {
-                possible=false;
-                return;
-            }
-        }
-        for (int i = 0; i < Terrain.length; i++) { // @Maualex2 on verifie que le coté droit est bien vide ou rempli d'un des blocs de la forme
-            for (int j = 0; j < Terrain[i].length; j++) {
-                if(Terrain[i][j].dernierbloc==true && (!Terrain[i][j+1].vide==true || !Terrain[i][j+1].dernierbloc==true)){
-                    possible=false; // @Maualex2 On peut mettre un return pour que ce soit plus rapide
-                }
-            }
-        }
-        if(possible==true){// ensuite on fait le déplacement;
-            for (int i = 0; i < Terrain.length; i++) { // on verifie que le coté droit est bien vide ou rempli d'un des blocs de la forme
-                for (int j = 0; j < Terrain[i].length; j++) {
-                    if(Terrain[i][j].dernierbloc==true ){
-                    Terrain[i][j+1]=Terrain[i][j];
-                    Terrain[i][j]=new bloc(Color.black,false,true);
-                    }
-                }
-            }
-        }
-    }
-    public void bougerGauche(){
-        boolean possible = true;
-        for (int i = 0; i < Terrain[0].length; i++) { // @Maualex2 teste si la forme est sur le coté droit
-            if (Terrain[i][12].dernierbloc==true) {
-                possible=false;
-                return;
-            }
-        }
-        for (int i = 0; i < Terrain.length; i++) { // @Maualex2 on verifie que le coté droit est bien vide ou rempli d'un des blocs de la forme
-            for (int j = 0; j < Terrain[i].length; j++) {
-                if(Terrain[i][j].dernierbloc==true && (!Terrain[i][j-1].vide==true || !Terrain[i][j-1].dernierbloc==true)){
-                    possible=false; // @Maualex2 On peut mettre un return pour que ce soit plus rapide
-                }
-            }
-        }
-        if(possible==true){// ensuite on fait le déplacement;
-            for (int i = 0; i < Terrain.length; i++) { // on verifie que le coté droit est bien vide ou rempli d'un des blocs de la forme
-                for (int j = 0; j < Terrain[i].length; j++) {
-                    if(Terrain[i][j].dernierbloc==true ){
-                    Terrain[i][j-1]=Terrain[i][j];
-                    Terrain[i][j]=new bloc(Color.black,false,true);
-                    }
-                }
-            }
-        }
-    } */
     public void bougerDroite(){
         boolean libre=true;
         try {
-            for (int i = 0; i < EnJeu.Coordonees.length; i++) {
-                    if(Terrain[EnJeu.Coordonees[i][0]+EnJeu.origine[0]+1][EnJeu.Coordonees[i][1]+EnJeu.origine[1]].vide==false){
+            for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
+                    if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]+1][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]].vide==false){
                         libre=false;
                     }
             }
-       } catch ( Exception e ) {
+        } catch ( Exception e ) {
           return; 
-       } finally {
+        } finally {
           if (libre){
               EnJeu.droite();
-          }
-       }
+            }
+        }
+    }
+
+    public void bougerGauche(){
+        boolean libre=true;
+        try {
+            for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
+                    if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]-1][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]].vide==false){
+                        libre=false;
+                    }
+            }
+        } catch ( Exception e ) {
+          return; 
+        } finally {
+          if (libre){
+              EnJeu.gauche();
+            }
+        }
     }
 
     public void descendre(){
