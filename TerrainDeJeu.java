@@ -18,12 +18,12 @@ public class TerrainDeJeu {
         EnJeu = this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size()));       
     }
 
-    public void LigneComplete(){ // parcourt le tableau et compte les blocs
+    public void LigneComplete(){ // parcourt le tableau et compte les blocs A VERIFIER
         int bonus = 0;
         for (int i = 0; i < Terrain.length; i++) {
             int nonvide = 0;
             for (int j = 0; j < Terrain[i].length; j++) {
-                if (Terrain[i][j].vide == false) {
+                if (Terrain[i][j] != null) {
                     nonvide++;
                 }
             }
@@ -34,7 +34,7 @@ public class TerrainDeJeu {
             }
         }
     }
-
+    // A VERIFIER
     public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs qui ne sont pas fixes vers le bas à partir d'une ligne que l'on précise
         for (int i = ligne; i > 0 ; i--) { //ligne parcourt du bas du tableau jusqu'en haut
             for (int j = 0; j < Terrain[i].length; j++) { // Colonne
@@ -94,7 +94,21 @@ public class TerrainDeJeu {
     }
 
     public void descendre(){
-      EnJeu.descendre();//Il faut vérifier qu'il n'y a pas de bloc en bas 
+        boolean libre=true;
+        try {
+            for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
+                    if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]+1].vide==false){
+                        libre=false;
+                    }
+            }
+        } catch ( Exception e ) {
+          
+            return; 
+        } finally {
+          if (libre){
+              EnJeu.descendre();;
+            }
+        }
     
 
     }

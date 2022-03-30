@@ -12,6 +12,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     JLabel Score; 
     int iChrono; 
     Timer Chrono; 
+    Timer Defilement;
     JLabel affChrono; 
     forme[] figure;
 
@@ -56,6 +57,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 
         //Chrono
         Chrono = new Timer(1000,this);
+        Defilement= new Timer(700,this);
         
         affChrono = new JLabel("Temps :");
         affChrono.setBounds(20, 50, 150, 50);
@@ -86,6 +88,10 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         if(e.getSource()== Chrono){
             iChrono++;
             affChrono.setText("Temps :"+String.valueOf(iChrono));
+        }
+        if(e.getSource()== Defilement){
+            Jeu.descendre();
+            GraphiqueTerrain.repaint();
         }
     }
     @Override
