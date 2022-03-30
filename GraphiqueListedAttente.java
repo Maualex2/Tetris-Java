@@ -12,7 +12,7 @@ public class GraphiqueListedAttente extends JPanel{
         g.fillRect(0,0,250,210);
 
         int[][] tab= Jeu.FormeEnAttente.Coordonnees; 
-         //int [][]tab={{0,0},{1,0},{0,1},{1,1}};
+        //int [][]tab={{0,0},{1,0},{0,1},{1,1}};
          for (int i = 0; i < tab.length; i++) {
             //g.setColor(Color.blue);
             g.setColor(Jeu.FormeEnAttente.couleur);

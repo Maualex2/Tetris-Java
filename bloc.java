@@ -5,6 +5,6 @@ public class bloc {
 
     public bloc(Color c, boolean v){
         couleur=c;
-        vide=false; 
+        vide=v; 
     }
 }

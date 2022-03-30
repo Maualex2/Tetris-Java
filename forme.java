@@ -1,5 +1,5 @@
 import java.awt.Color;
-public class forme {
+public class forme{
     
     public Color couleur;
     public int[][] Coordonnees; // premiere colonne abscisse, 2eme colonne ordonnee
@@ -7,13 +7,12 @@ public class forme {
     public char nom;
 
     public forme(Color c, int[][] coor, char n){
-        int[] tab = {0,0};
+        int[] tab = {6,3};
         origine = tab;
         couleur = c;
         Coordonnees = coor;
         nom = n;
     }
-    
     public void descendre(){
         origine[1]=origine[1]+1;
     }
@@ -21,7 +20,7 @@ public class forme {
         origine[0]=origine[0]-1;
     }
     public void droite(){
-        origine[0]=origine[0]-1;
+        origine[0]=origine[0]+1;
     }
 
     public void rotation(){

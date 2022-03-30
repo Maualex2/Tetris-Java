@@ -14,7 +14,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     Timer Chrono; 
     Timer Defilement;
     JLabel affChrono; 
-    forme[] figure;
+    JTextField text;
 
     public Interface(TerrainDeJeu jeu){
         super("Tetris");
@@ -75,14 +75,23 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Page.add(GraphiqueListedAttente);
         Page.add(Stat);
         this.add(Page);
+
+        //Clavier
+        
+        
+        this.setFocusable(true);//permet de suivre le clavier sur toute la fenetre
+        this.setFocusTraversalKeysEnabled(false);//jsp
+        addKeyListener(this);
         setVisible(true);
 
     }
     public void actionPerformed(ActionEvent e){
-       if (e.getSource() == Start) {
+        if (e.getSource() == Start) {
 		   //démarrer le jeu
+            this.requestFocus();
            iChrono=0;
            Chrono.start();
+           Defilement.start();
            affChrono.setText("Temps : "+String.valueOf(iChrono));
 		}
         if(e.getSource()== Chrono){
@@ -92,24 +101,31 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         if(e.getSource()== Defilement){
             Jeu.descendre();
             GraphiqueTerrain.repaint();
+            GraphiqueListedAttente.repaint();
         }
     }
-    @Override
-    public void keyTyped(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {
         // TODO Auto-generated method stub
         
     }
-    @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyTyped(KeyEvent e) {
         char caractere = e.getKeyChar();
-        if(((int)caractere==81)||(int)caractere==113){
+        System.out.println("CAPTER");
+        if(((int)caractere==81)||(int)caractere==113 && iChrono>0){
+            Defilement.stop();
             Jeu.EnJeu.gauche();
+            GraphiqueTerrain.repaint();
+            System.out.println("Gauche");
+            Defilement.start();
         }
-        if(((int)caractere==68)||(int)caractere==100){
+        if(((int)caractere==68)||(int)caractere==100 && iChrono>0){
+            Defilement.stop();
             Jeu.EnJeu.droite();
+            System.out.println("Droite");
+            GraphiqueTerrain.repaint();
+            Defilement.start();
         }
     }
-    @Override
     public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
         

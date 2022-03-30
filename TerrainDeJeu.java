@@ -10,7 +10,12 @@ public class TerrainDeJeu {
     public forme EnJeu;
 
     public TerrainDeJeu(LinkedList<forme> FormeStandard){
-        Terrain = new bloc[21][13];
+        Terrain = new bloc[12][21];
+        for (int i = 0; i < Terrain.length; i++) {
+            for (int j = 0; j < Terrain[i].length; j++) {
+                Terrain[i][j]=new bloc(Color.black,true);
+            }
+        }
         points = 0;
         FormeJouee = null;
         this.FormeStandard = FormeStandard;
@@ -23,7 +28,7 @@ public class TerrainDeJeu {
         for (int i = 0; i < Terrain.length; i++) {
             int nonvide = 0;
             for (int j = 0; j < Terrain[i].length; j++) {
-                if (Terrain[i][j] != null) {
+                if (Terrain[i][j].vide==false) {
                     nonvide++;
                 }
             }
@@ -34,17 +39,16 @@ public class TerrainDeJeu {
             }
         }
     }
-    // A VERIFIER
     public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs qui ne sont pas fixes vers le bas à partir d'une ligne que l'on précise
         for (int i = ligne; i > 0 ; i--) { //ligne parcourt du bas du tableau jusqu'en haut
             for (int j = 0; j < Terrain[i].length; j++) { // Colonne
                 Terrain[i-1][j]=Terrain[i][j];
-                Terrain[i][j]= new bloc(Color.BLACK, false);
+                Terrain[i][j]= new bloc(Color.black,false);
             }
         }
     }
 
-    public boolean perdu(){ //Définir la notion de perdu
+    public boolean perdu(){ //A reprendre car ne prends pas encompte le cas ou on fait apparaitre une pièce sur des blocs existans
         boolean test=false;
         int j=0;
         while ((j< Terrain[1].length)&&(!test)){
@@ -56,7 +60,11 @@ public class TerrainDeJeu {
         return test;
     }
     
-    public void ajouterForme(){
+    public void ajouterForme() {//Change la forme quand elle a atteint le bas 
+        EnJeu.origine[0]=6;//Remet l'origine en place
+        EnJeu.origine[1]=3;
+        EnJeu=FormeEnAttente;
+        FormeEnAttente = this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size()));
     }
 
     public void bougerDroite(){
@@ -68,7 +76,7 @@ public class TerrainDeJeu {
                     }
             }
         } catch ( Exception e ) {
-          return; 
+          libre=false; 
         } finally {
           if (libre){
               EnJeu.droite();
@@ -80,21 +88,27 @@ public class TerrainDeJeu {
         boolean libre=true;
         try {
             for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
+                    System.out.println(EnJeu.Coordonnees[i][0]+EnJeu.origine[0]-1);
                     if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]-1][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]].vide==false){
                         libre=false;
+                        System.out.println("Test");
                     }
             }
         } catch ( Exception e ) {
-          return; 
+            System.out.println("Testerreur");
+          libre=false;
         } finally {
-          if (libre){
+          if (libre==true){
               EnJeu.gauche();
+
             }
         }
     }
 
     public void descendre(){
         boolean libre=true;
+        //System.out.print(EnJeu.origine[0]);
+        //System.out.println(EnJeu.origine[1]);
         try {
             for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
                     if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]+1].vide==false){
@@ -102,16 +116,20 @@ public class TerrainDeJeu {
                     }
             }
         } catch ( Exception e ) {
-          
-            return; 
+            libre=false;
         } finally {
-          if (libre){
-              EnJeu.descendre();;
+            if (libre){
+              EnJeu.descendre();
+            }else{
+                for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
+                    Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]]=new bloc(EnJeu.couleur, false);
+                    }
+                ajouterForme();
             }
         }
-    
-
+        
     }
+    
     public void tourner(){
       // TODO document why this method is empty
     }
