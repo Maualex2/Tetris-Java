@@ -27,16 +27,18 @@ public class TerrainDeJeu {
         int bonus = 0;
         for (int i = 0; i < Terrain.length; i++) {
             int nonvide = 0;
+            System.out.println("Nouvelle ligne");
             for (int j = 0; j < Terrain[i].length; j++) {
                 if (Terrain[i][j].vide==false) {
                     nonvide++;
                 }
             }
-            if (nonvide==13){
+            if (nonvide==12){
                 DecaleEnBas(i);
                 bonus++; // j'ai juste fait un bonus pour valoriser les enchainements
                 points=points+13*bonus;
             }
+            System.out.println(nonvide);
         }
     }
     public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs qui ne sont pas fixes vers le bas à partir d'une ligne que l'on précise
@@ -125,6 +127,7 @@ public class TerrainDeJeu {
                     Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]]=new bloc(EnJeu.couleur, false);
                     }
                 ajouterForme();
+                LigneComplete();
             }
         }
         

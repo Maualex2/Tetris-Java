@@ -113,15 +113,22 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         System.out.println("CAPTER");
         if(((int)caractere==81)||(int)caractere==113 && iChrono>0){
             Defilement.stop();
-            Jeu.EnJeu.gauche();
+            Jeu.bougerGauche();
             GraphiqueTerrain.repaint();
             System.out.println("Gauche");
             Defilement.start();
         }
         if(((int)caractere==68)||(int)caractere==100 && iChrono>0){
             Defilement.stop();
-            Jeu.EnJeu.droite();
+            Jeu.bougerDroite();
             System.out.println("Droite");
+            GraphiqueTerrain.repaint();
+            Defilement.start();
+        }
+        if(((int)caractere==83)||(int)caractere==115 && iChrono>0){
+            Defilement.stop();
+            Jeu.descendre();;
+            System.out.println("Descendre");
             GraphiqueTerrain.repaint();
             Defilement.start();
         }

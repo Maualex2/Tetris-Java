@@ -1,7 +1,7 @@
  import java.awt.Color;
 import java.util.LinkedList;
 public class Main {
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) {
         // création des formes utilisées
         LinkedList<forme> figure= new LinkedList<forme>();
         int [][] tab={{-1,0},{+1,0},{+1,1},{0,0}};
