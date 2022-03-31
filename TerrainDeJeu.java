@@ -10,7 +10,7 @@ public class TerrainDeJeu {
     public forme EnJeu;
 
     public TerrainDeJeu(LinkedList<forme> FormeStandard){
-        Terrain = new bloc[12][21];
+        Terrain = new bloc[12][21]; // ligne et colonne
         for (int i = 0; i < Terrain.length; i++) {
             for (int j = 0; j < Terrain[i].length; j++) {
                 Terrain[i][j]=new bloc(Color.black,true);
@@ -25,11 +25,11 @@ public class TerrainDeJeu {
 
     public void LigneComplete(){ // parcourt le tableau et compte les blocs A VERIFIER
         int bonus = 0;
-        for (int i = 0; i < Terrain.length; i++) {
+        for (int i = 0; i < Terrain[0].length; i++) {
             int nonvide = 0;
-            System.out.println("Nouvelle ligne");
-            for (int j = 0; j < Terrain[i].length; j++) {
-                if (Terrain[i][j].vide==false) {
+            System.out.println(i);
+            for (int j = 0; j < Terrain.length; j++) {
+                if (Terrain[j][i].vide==false) {
                     nonvide++;
                 }
             }
@@ -43,9 +43,9 @@ public class TerrainDeJeu {
     }
     public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs qui ne sont pas fixes vers le bas à partir d'une ligne que l'on précise
         for (int i = ligne; i > 0 ; i--) { //ligne parcourt du bas du tableau jusqu'en haut
-            for (int j = 0; j < Terrain[i].length; j++) { // Colonne
-                Terrain[i-1][j]=Terrain[i][j];
-                Terrain[i][j]= new bloc(Color.black,false);
+            for (int j = 0; j < Terrain.length; j++) { // Colonne
+                Terrain[j][i-1]=Terrain[j][i];
+                Terrain[j][i]= new bloc(Color.black,false);
             }
         }
     }
@@ -90,14 +90,11 @@ public class TerrainDeJeu {
         boolean libre=true;
         try {
             for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
-                    System.out.println(EnJeu.Coordonnees[i][0]+EnJeu.origine[0]-1);
                     if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]-1][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]].vide==false){
                         libre=false;
-                        System.out.println("Test");
                     }
             }
         } catch ( Exception e ) {
-            System.out.println("Testerreur");
           libre=false;
         } finally {
           if (libre==true){
