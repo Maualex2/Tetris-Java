@@ -13,6 +13,13 @@ public class forme{
         Coordonnees = coor;
         nom = n;
     }
+    public forme(forme f){ // Permet de faire des copies de forme
+        this.couleur=f.couleur;
+        this.Coordonnees=f.Coordonnees;
+        this.origine=f.origine;
+        this.nom=f.nom;
+
+    }
     public void descendre(){
         origine[1]=origine[1]+1;
     }

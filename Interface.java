@@ -112,18 +112,18 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         char caractere = e.getKeyChar();
         System.out.println("CAPTER");
         if(((int)caractere==81)||(int)caractere==113 && iChrono>0){
-            Defilement.stop();
+            //Defilement.stop();
             Jeu.bougerGauche();
             GraphiqueTerrain.repaint();
             System.out.println("Gauche");
-            Defilement.start();
+            //Defilement.start();
         }
         if(((int)caractere==68)||(int)caractere==100 && iChrono>0){
-            Defilement.stop();
+            //Defilement.stop();
             Jeu.bougerDroite();
             System.out.println("Droite");
             GraphiqueTerrain.repaint();
-            Defilement.start();
+            //Defilement.start();
         }
         if(((int)caractere==83)||(int)caractere==115 && iChrono>0){
             Defilement.stop();
@@ -132,6 +132,14 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
             GraphiqueTerrain.repaint();
             Defilement.start();
         }
+        if(((int)caractere==90)||(int)caractere==122 && iChrono>0){
+            //Defilement.stop();
+            Jeu.tourner();
+            System.out.println("tourner");
+            GraphiqueTerrain.repaint();
+            //Defilement.start();
+        }
+
     }
     public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub

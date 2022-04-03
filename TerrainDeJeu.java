@@ -44,8 +44,8 @@ public class TerrainDeJeu {
     public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs qui ne sont pas fixes vers le bas à partir d'une ligne que l'on précise
         for (int i = ligne; i > 0 ; i--) { //ligne parcourt du bas du tableau jusqu'en haut
             for (int j = 0; j < Terrain.length; j++) { // Colonne
-                Terrain[j][i-1]=Terrain[j][i];
-                Terrain[j][i]= new bloc(Color.black,false);
+                Terrain[j][i]=Terrain[j][i-1];
+                Terrain[j][i-1]= new bloc(Color.black,true);
             }
         }
     }
@@ -131,8 +131,22 @@ public class TerrainDeJeu {
     }
     
     public void tourner(){
-      // TODO document why this method is empty
+        forme temp= new forme(EnJeu);
+        temp.rotation();
+        boolean libre=true;
+        try {
+            for (int i = 0; i < temp.Coordonnees.length; i++) {
+                    if(Terrain[temp.Coordonnees[i][0]+temp.origine[0]][temp.Coordonnees[i][1]+temp.origine[1]].vide==false){
+                        libre=false;
+                    }
+            }
+        } catch ( Exception e ) {
+            libre=false;
+        } finally {
+            if (libre){
+              EnJeu.rotation();
+            }
+        }
     }
-
 
 }
