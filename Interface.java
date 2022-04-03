@@ -15,12 +15,14 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     Timer Defilement;
     JLabel affChrono; 
     JTextField text;
+    int niveau;
 
     public Interface(TerrainDeJeu jeu){
         super("Tetris");
         Jeu=jeu;
         setSize(800,900);
         setLocation(460, 140);
+        niveau=0;
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -102,6 +104,12 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
             Jeu.descendre();
             GraphiqueTerrain.repaint();
             GraphiqueListedAttente.repaint();
+            if(iChrono%20==0 && niveau!=12){
+                niveau++;
+                Defilement = new Timer(700-niveau*40, this);
+                Defilement.start();
+            }
+            
         }
     }
     public void keyPressed(KeyEvent e) {
