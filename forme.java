@@ -7,12 +7,13 @@ public class forme{
     public char nom;
 
     public forme(Color c, int[][] coor, char n){
-        int[] tab = {6,3};
+        int[] tab = {6,0};
         origine = tab;
         couleur = c;
         Coordonnees = coor;
         nom = n;
     }
+
     public forme(forme f){ // Permet de faire des copies de forme
         this.couleur=f.couleur;
         this.Coordonnees=f.Coordonnees;
@@ -20,12 +21,15 @@ public class forme{
         this.nom=f.nom;
 
     }
+
     public void descendre(){
         origine[1]=origine[1]+1;
     }
+
     public void gauche(){
         origine[0]=origine[0]-1;
     }
+
     public void droite(){
         origine[0]=origine[0]+1;
     }

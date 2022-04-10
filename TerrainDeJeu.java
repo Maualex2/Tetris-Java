@@ -23,11 +23,11 @@ public class TerrainDeJeu {
         EnJeu = this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size()));       
     }
 
+
     public void LigneComplete(){ // parcourt le tableau et compte les blocs A VERIFIER
         int bonus = 0;
         for (int i = 0; i < Terrain[0].length; i++) {
             int nonvide = 0;
-            System.out.println(i);
             for (int j = 0; j < Terrain.length; j++) {
                 if (Terrain[j][i].vide==false) {
                     nonvide++;
@@ -36,9 +36,8 @@ public class TerrainDeJeu {
             if (nonvide==12){
                 DecaleEnBas(i);
                 bonus++; // j'ai juste fait un bonus pour valoriser les enchainements
-                points=points+13*bonus;
+                this.points=this.points+13*bonus;
             }
-            System.out.println(nonvide);
         }
     }
     public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs qui ne sont pas fixes vers le bas à partir d'une ligne que l'on précise
@@ -50,11 +49,11 @@ public class TerrainDeJeu {
         }
     }
 
-    public boolean perdu(){ //A reprendre car ne prends pas encompte le cas ou on fait apparaitre une pièce sur des blocs existans
+    public boolean perdu(){ // vérifie si la partie est perdu ou non et renvoie un booléen
         boolean test=false;
         int j=0;
-        while ((j< Terrain[1].length)&&(!test)){
-            if (Terrain[1][j].vide==false){
+        while ((j< Terrain.length)&&(!test)){
+            if (Terrain[j][0].vide==false){
                 test=true;
             }
             j++;
@@ -64,7 +63,7 @@ public class TerrainDeJeu {
     
     public void ajouterForme() {//Change la forme quand elle a atteint le bas 
         EnJeu.origine[0]=6;//Remet l'origine en place
-        EnJeu.origine[1]=3;
+        EnJeu.origine[1]=0;
         EnJeu=FormeEnAttente;
         FormeEnAttente = this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size()));
     }
@@ -115,16 +114,25 @@ public class TerrainDeJeu {
                     }
             }
         } catch ( Exception e ) {
-            libre=false;
+            if(EnJeu.origine[1]>0){
+                libre=false;
+            }
+            
         } finally {
             if (libre){
               EnJeu.descendre();
             }else{
-                for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
-                    Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]]=new bloc(EnJeu.couleur, false);
+                    try{
+                        for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
+                            Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]]=new bloc(EnJeu.couleur, false);
+                        }
+                    }catch(Exception e){
+                            perdu();
+                    }finally{
+                        ajouterForme();
+                        LigneComplete();
                     }
-                ajouterForme();
-                LigneComplete();
+                
             }
         }
         

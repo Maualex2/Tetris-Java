@@ -16,9 +16,11 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     JLabel affChrono; 
     JTextField text;
     int niveau;
+    JButton Regles;
 
     public Interface(TerrainDeJeu jeu){
         super("Tetris");
+        iChrono=0;
         Jeu=jeu;
         setSize(800,900);
         setLocation(460, 140);
@@ -33,7 +35,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         //GraphiqueListedAttente
         GraphiqueListedAttente= new GraphiqueListedAttente(jeu);
         GraphiqueListedAttente.setLayout(null);
-        GraphiqueListedAttente.setBounds(480,50,300,200);
+        GraphiqueListedAttente.setBounds(480,50,250,200);
         GraphiqueListedAttente.setBackground(Color.cyan);
 
         //Stat 
@@ -43,7 +45,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Stat.setBackground(Color.cyan);
 
         //Bouton Start 
-        Start= new JButton("Start");
+        Start = new JButton("Start");
         Stat.add(Start);
         Start.setBounds(50,200,100,50);
         Start.setLayout(null);
@@ -53,9 +55,10 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         
     
         //Score
-		Score=new JLabel("score ici");  
+		Score=new JLabel("Score : " + Jeu.points);  
 		Score.setBounds(50,120, 100, 50);  
 		Stat.add(Score);
+
 
         //Chrono
         Chrono = new Timer(1000,this);
@@ -68,54 +71,84 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
 		Stat.add(affChrono);
 
+        //Règles du jeu
+        Regles = new JButton("Règles du Jeu");
+        Regles.setBounds(300,200,100,50);
+        Regles.setLayout(null);
+        Regles.setBackground(new Color(245,0,242));
+        Regles.setFont(new Font("Arial", Font.BOLD, 25));
+        Regles.addActionListener(this); 
+
         //Fenetre entiere
         Page= new JPanel();
         Page.setLayout(null);
         Page.setBounds(0,0,800,900);
-        //Page.setBackground(Color.black);
         Page.add(GraphiqueTerrain);
         Page.add(GraphiqueListedAttente);
         Page.add(Stat);
+        Page.add(Regles);
         this.add(Page);
 
+
         //Clavier
-        
-        
         this.setFocusable(true);//permet de suivre le clavier sur toute la fenetre
         this.setFocusTraversalKeysEnabled(false);//jsp
         addKeyListener(this);
         setVisible(true);
 
     }
+
     public void actionPerformed(ActionEvent e){
+   
         if (e.getSource() == Start) {
+              if (Chrono.isRunning()) { //chrono en route
+                    Chrono.stop(); 
+                    Defilement.stop();
+                    Start.setText("Start");
+         } else {
 		   //démarrer le jeu
+            Start.setText("Pause");
             this.requestFocus();
-           iChrono=0;
            Chrono.start();
            Defilement.start();
            affChrono.setText("Temps : "+String.valueOf(iChrono));
-		}
+		    }
+        }
         if(e.getSource()== Chrono){
             iChrono++;
             affChrono.setText("Temps :"+String.valueOf(iChrono));
+            Score.setText("Score :" + Jeu.points); 
+            
         }
         if(e.getSource()== Defilement){
             Jeu.descendre();
-            GraphiqueTerrain.repaint();
+            
             GraphiqueListedAttente.repaint();
-            if(iChrono%20==0 && niveau!=12){
+            if (Jeu.perdu()){
+                Defilement.stop();
+                Chrono.stop();
+                System.out.println("PERDU");
+                JOptionPane.showMessageDialog(this,"Fin de la partie "+"\n"+ "Score final ="+ Jeu.points+"\n"+ "Vous avez survécu "+iChrono+" secondes");
+            }
+            GraphiqueTerrain.repaint();
+            if(iChrono%20==0 && niveau!=16){
                 niveau++;
-                Defilement = new Timer(700-niveau*40, this);
+                Defilement = new Timer(700-niveau*30, this);
                 Defilement.start();
             }
-            
+            Score.setText("Score :" + Jeu.points); 
         }
-    }
+        if(e.getSource() == Regles) {
+            JOptionPane.showMessageDialog(this, "bonjour ceci est un test");
+        }
+     }
+    
+
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
+        // Méthode obligatoire pour que le keyListener fonctionne 
+        // Vide car on ne s'en sert pas ici   
     }
+
     public void keyTyped(KeyEvent e) {
         char caractere = e.getKeyChar();
         System.out.println("CAPTER");
@@ -135,9 +168,10 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         }
         if(((int)caractere==83)||(int)caractere==115 && iChrono>0){
             Defilement.stop();
-            Jeu.descendre();;
+            Jeu.descendre();
             System.out.println("Descendre");
             GraphiqueTerrain.repaint();
+            
             Defilement.start();
         }
         if(((int)caractere==90)||(int)caractere==122 && iChrono>0){
@@ -149,8 +183,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         }
 
     }
+    
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
+        // Méthode obligatoire pour que le keyListener fonctionne 
+        // Vide car on ne s'en sert pas ici   
     }
 }
