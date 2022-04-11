@@ -23,7 +23,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         iChrono=0;
         Jeu=jeu;
         setSize(800,900);
-        setLocation(460, 140);
+        setLocation(400, 100);
         niveau=0;
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,6 +94,8 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         this.setFocusable(true);//permet de suivre le clavier sur toute la fenetre
         this.setFocusTraversalKeysEnabled(false);//jsp
         addKeyListener(this);
+
+        
         setVisible(true);
 
     }
