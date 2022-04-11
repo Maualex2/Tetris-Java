@@ -41,7 +41,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         //Stat 
         Stat = new JPanel();
         Stat.setLayout(null);
-        Stat.setBounds(480,300,200,300);
+        Stat.setBounds(480,300,200,350);
         Stat.setBackground(Color.cyan);
 
         //Bouton Start 
@@ -73,11 +73,12 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 
         //Règles du jeu
         Regles = new JButton("Règles du Jeu");
-        Regles.setBounds(300,200,100,50);
+        Regles.setBounds(50,270,100,50);
         Regles.setLayout(null);
         Regles.setBackground(new Color(245,0,242));
         Regles.setFont(new Font("Arial", Font.BOLD, 25));
         Regles.addActionListener(this); 
+        Stat.add(Regles);
 
         //Fenetre entiere
         Page= new JPanel();
@@ -86,7 +87,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Page.add(GraphiqueTerrain);
         Page.add(GraphiqueListedAttente);
         Page.add(Stat);
-        Page.add(Regles);
+        
         this.add(Page);
 
 
