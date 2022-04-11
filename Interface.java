@@ -72,8 +72,8 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 		Stat.add(affChrono);
 
         //Règles du jeu
-        Regles = new JButton("Règles du Jeu");
-        Regles.setBounds(50,270,100,50);
+        Regles = new JButton("Règles");
+        Regles.setBounds(30,270,150,50);
         Regles.setLayout(null);
         Regles.setBackground(new Color(245,0,242));
         Regles.setFont(new Font("Arial", Font.BOLD, 25));
