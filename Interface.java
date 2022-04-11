@@ -17,7 +17,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     JTextField text;
     int niveau;
     JButton Regles;
-    MesReglesDuJeu fenetreRegles=new MesReglesDuJeu();
+    MesReglesDuJeu fenetreRegles= new MesReglesDuJeu();
 
     public Interface(TerrainDeJeu jeu){
         super("Tetris");

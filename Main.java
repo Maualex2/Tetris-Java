@@ -29,7 +29,6 @@ public class Main {
         
         TerrainDeJeu Jeu = new TerrainDeJeu(figure);
         Interface f = new Interface(Jeu);
-        EnregistrementScore i = new EnregistrementScore(200);
     }
         
 }
