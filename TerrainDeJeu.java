@@ -62,6 +62,7 @@ public class TerrainDeJeu {
     }
     
     public void ajouterForme() {//Change la forme quand elle a atteint le bas 
+        points=points+4;
         EnJeu.origine[0]=6;//Remet l'origine en place
         EnJeu.origine[1]=0;
         EnJeu=FormeEnAttente;
