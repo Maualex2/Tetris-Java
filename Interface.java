@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
+import java.nio.file.*;
 
 public class Interface extends JFrame implements ActionListener,KeyListener{
     JPanel GraphiqueTerrain;
@@ -133,6 +135,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
                 Chrono.stop();
                 System.out.println("PERDU");
                 JOptionPane.showMessageDialog(this,"Fin de la partie "+"\n"+ "Score final ="+ Jeu.points+"\n"+ "Vous avez survécu "+iChrono+" secondes");
+                EnregistrementScore i = new EnregistrementScore(Jeu.points);
             }
             GraphiqueTerrain.repaint();
             if(iChrono%20==0 && niveau!=16){
