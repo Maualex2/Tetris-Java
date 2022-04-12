@@ -1,4 +1,5 @@
 import java.awt.Color;
+
 public class bloc {
     Color couleur;
     boolean vide;
