@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
+
 public class MesReglesDuJeu extends JFrame{
 
     JPanel conteneur;
@@ -14,7 +15,7 @@ public class MesReglesDuJeu extends JFrame{
     JTextArea perdre;
     JTextArea battezVotreScore;
 
-    public MesReglesDuJeu (){
+    public MesReglesDuJeu  (){
         super("Règle du Tetrinsa");
         setSize(500,600);
         setLocation(1000, 100);
@@ -52,11 +53,12 @@ public class MesReglesDuJeu extends JFrame{
         LigneComp = new JLabel(new ImageIcon("./ligneCompleteAV.JPG"));
 		LigneComp.setSize(200,80);
 		LigneComp.setLocation(20,330);
+
         JLabel LigneComp2 = new JLabel(new ImageIcon("./ligneCompleteAP.JPG"));
 		LigneComp2.setSize(200,80);
 		LigneComp2.setLocation(300,330);
 
-        JPanel conteneur = new JPanel();
+        conteneur = new JPanel();
 		conteneur.setLayout(null);
 		conteneur.setBounds(0,0,500,900) ;
 		conteneur.setBackground(Color.black);
