@@ -30,11 +30,16 @@ public class MesReglesDuJeu extends JFrame{
 		//logo.setLocation(100,60);
 
         //Texte Objectif
-        Objectif=new JTextArea("Bienvenue à Tetrinsa! Nous sommes heureux de vous faire découvrir le jeu du Tetris! L'objectif est simple : Faire le score le plus élevé en un minimum de temps." );
-		Objectif.setBounds(20,100,450,40);
+        Objectif=new JTextArea("Bienvenue à Tetrinsa! Nous sommes heureux de vous faire découvrir le jeu du Tetris! L'objectif est simple : Faire le score le plus élevé en un minimum de temps."+"\n"+" Le plateau de jeu se compose en trois parties: la zone score avec le bouton start/pause qui permettra de lancer votre partie ou de la mettre en pause; le plateau de jeu où vous suivrez l'évolution de votre partie et la pièce en attente qui présente la prochaine pièce jouée. " );
+		Objectif.setBounds(20,100,450,100);
 		Objectif.setBackground(Color.red);
 		Objectif.setForeground(Color.white);
         Objectif.setLineWrap(true);
+
+        // plateau 
+        //JLabel plateau = new JLabel(new ImageIcon("./plateau.png"));
+		//logo.setSize(300,80);
+		//logo.setLocation(200, 210);
 
         //pour cela ligneComplete
         complete =new JTextArea(" Pour cela, vous devez former des lignes complètes. Complèter la ligne la fera automatiquement disparaitre et vous fera gagner des points. Compléter plusieurs lignes fera doubler le nombre de points gagné. ");
@@ -44,9 +49,12 @@ public class MesReglesDuJeu extends JFrame{
         complete.setLineWrap(true);
          
         // LigneComp
-        //LigneComp = new JLabel(new ImageIcon("./insa_logo.png"));
-		//LigneComp.setSize(300,80);
-		//LigneComp.setLocation(20,330);
+        LigneComp = new JLabel(new ImageIcon("./ligneCompleteAV.JPG"));
+		LigneComp.setSize(200,80);
+		LigneComp.setLocation(20,330);
+        JLabel LigneComp2 = new JLabel(new ImageIcon("./ligneCompleteAP.JPG"));
+		LigneComp2.setSize(200,80);
+		LigneComp2.setLocation(300,330);
 
         JPanel conteneur = new JPanel();
 		conteneur.setLayout(null);
@@ -56,7 +64,8 @@ public class MesReglesDuJeu extends JFrame{
         //conteneur.add(logo);
         conteneur.add(Objectif);
         conteneur.add(complete);
-        //conteneur.add(LigneComplete);
+        conteneur.add(LigneComp);
+        conteneur.add(LigneComp2);
         add(conteneur);
 		
 		setVisible(false);
