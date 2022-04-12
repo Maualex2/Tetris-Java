@@ -5,7 +5,7 @@ import java.nio.file.*;
 import static java.nio.file.StandardOpenOption.*;
 public class AffichageScore extends JFrame{
         public AffichageScore() {
-            setSize(300,300);
+            setSize(500,500);
             setLocation(400, 100);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             JLabel j = new JLabel();
@@ -18,8 +18,8 @@ public class AffichageScore extends JFrame{
              
                 BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                 String s = null;
-                while(s = reader.readLine() != null){
-                    System.out.println(s);
+                while(reader.readLine() != null){
+                    Texte=Texte+reader.readLine()+"\n";
                 }
                 input.close();
  
