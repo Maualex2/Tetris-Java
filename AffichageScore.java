@@ -8,7 +8,9 @@ public class AffichageScore extends JFrame{
             setSize(500,500);
             setLocation(400, 100);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            JLabel j = new JLabel();
+            JLabel j = new JLabel("",SwingConstants.CENTER);
+            j.setVerticalAlignment(SwingConstants.CENTER);
+            j.setLayout(null);
             this.add(j);
             String Texte="";
             Path chemin = Paths.get("score.txt");
@@ -26,6 +28,7 @@ public class AffichageScore extends JFrame{
             } catch (IOException e) {
                 System.out.println("Message " + e);
             }
+            j.setText(Texte);
             setVisible(true);
         }
             
