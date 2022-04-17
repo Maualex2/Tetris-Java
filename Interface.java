@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.nio.file.*;
+import javax.sound.sampled.*;
 
 public class Interface extends JFrame implements ActionListener,KeyListener{
     JPanel GraphiqueTerrain;
@@ -19,7 +20,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     JTextField text;
     int niveau;
     JButton Regles;
+    JButton ScoreP ;
     MesReglesDuJeu fenetreRegles= new MesReglesDuJeu();
+    Son Musique;
 
     public Interface(TerrainDeJeu jeu){
         super("Tetris");
@@ -107,6 +110,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     public void actionPerformed(ActionEvent e){
    
         if (e.getSource() == Start) {
+            Musique = new Son();
               if (Chrono.isRunning()) { //chrono en route
                     Chrono.stop(); 
                     Defilement.stop();
@@ -194,5 +198,8 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     public void keyReleased(KeyEvent e) {
         // Méthode obligatoire pour que le keyListener fonctionne 
         // Vide car on ne s'en sert pas ici   
+    }
+    public void ScoreMax(){
+        
     }
 }

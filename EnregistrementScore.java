@@ -15,6 +15,7 @@ public class EnregistrementScore extends JFrame implements ActionListener{
         JButton Val;
         JPanel Page;
         JLabel info;
+
         public EnregistrementScore(int Score){
             this.Score=Score;
             setSize(300,300);
@@ -24,8 +25,6 @@ public class EnregistrementScore extends JFrame implements ActionListener{
             //Date
             DateTimeFormatter temp = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
             Date=temp.format(LocalDateTime.now());
-
-
 
             Val = new JButton("Enregistrer");
             Val.setLayout(null);
@@ -40,7 +39,6 @@ public class EnregistrementScore extends JFrame implements ActionListener{
             Field.setLayout(null);
             Field.setBounds(40,50,200,50);
 
-
             Page= new JPanel();
             Page.setLayout(null);
             Page.setBounds(0,0,300,300);
@@ -51,7 +49,7 @@ public class EnregistrementScore extends JFrame implements ActionListener{
 
             setVisible(true);
         }
-        @Override
+
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == Val) {
                 nom=Field.getText();

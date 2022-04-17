@@ -3,7 +3,9 @@ import java.awt.event.*;
 import java.io.*;
 import java.nio.file.*;
 import static java.nio.file.StandardOpenOption.*;
+
 public class AffichageScore extends JFrame{
+
         public AffichageScore() {
             setSize(500,500);
             setLocation(400, 100);
@@ -15,6 +17,7 @@ public class AffichageScore extends JFrame{
             String Texte="";
             Path chemin = Paths.get("score.txt");
             InputStream input = null;
+            
             try {
                 input = Files.newInputStream(chemin);
              
