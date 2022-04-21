@@ -4,6 +4,8 @@ import java.awt.event.*;
 import java.io.*;
 import java.nio.file.*;
 import javax.sound.sampled.*;
+import static java.nio.file.StandardOpenOption.*;
+
 
 public class Interface extends JFrame implements ActionListener,KeyListener{
     JPanel GraphiqueTerrain;
@@ -23,6 +25,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     JButton ScoreP ;
     MesReglesDuJeu fenetreRegles= new MesReglesDuJeu();
     Son Musique;
+    int ScoreMax;
+    String NomScoreMax;
+    
 
     public Interface(TerrainDeJeu jeu){
         super("Tetris");
@@ -31,6 +36,8 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         setSize(800,900);
         setLocation(200, 100);
         niveau=0;
+        ScoreMax=0;
+        ScoreMax();
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -200,6 +207,24 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         // Vide car on ne s'en sert pas ici   
     }
     public void ScoreMax(){
+        File doc = new File("score.txt");
+        
+        try {
+            BufferedReader obj = new BufferedReader(new FileReader(doc));
+            String strng;
+            
+            while ((strng = obj.readLine()) != null){
+                String [] parts = strng.split( " " );
+                int temp = Integer.parseInt(parts[2]);
+                if(temp>ScoreMax){
+                    ScoreMax=temp;
+                    NomScoreMax=parts[4];
+                }
+            }
+        
+        } catch (Exception e) {
+            System.out.println("Erreur : "+ e);
+        }
         
     }
 }
