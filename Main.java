@@ -29,6 +29,7 @@ public class Main {
         
         TerrainDeJeu Jeu = new TerrainDeJeu(figure);
         Interface f = new Interface(Jeu);
+        String [] parts = "19/01/2018".split( "/" );
     }
         
 }
