@@ -8,6 +8,7 @@ public class TerrainDeJeu {
     public LinkedList<forme> FormeStandard;
     public forme FormeEnAttente;
     public forme EnJeu;
+    public int hauteur;
 
     public TerrainDeJeu(LinkedList<forme> FormeStandard){
         Terrain = new bloc[12][21]; // ligne et colonne
@@ -74,6 +75,7 @@ public class TerrainDeJeu {
     
     public void ajouterForme() {//Change la forme quand elle a atteint le bas 
         points=points+4;
+        hauteur=EnJeu.origine[1];
         EnJeu.origine[0]=6;//Remet l'origine en place
         EnJeu.origine[1]=0;
         EnJeu=FormeEnAttente;

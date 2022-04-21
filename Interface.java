@@ -27,10 +27,12 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     Son Musique;
     int ScoreMax;
     String NomScoreMax;
+    IA IA;
     
 
-    public Interface(TerrainDeJeu jeu){
+    public Interface(TerrainDeJeu jeu,IA IA){
         super("Tetris");
+        this.IA=IA;
         iChrono=0;
         Jeu=jeu;
         setSize(800,900);
@@ -201,7 +203,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         }
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){
             //Defilement.stop();
-            Jeu.DescenteInstantane();
+            IA.joue1Coup();
             System.out.println("descente instantané");
             GraphiqueTerrain.repaint();
             //Defilement.start();

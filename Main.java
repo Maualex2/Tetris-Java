@@ -28,7 +28,8 @@ public class Main {
         // tableau de forme utilisées pour le choix aléatoire
         
         TerrainDeJeu Jeu = new TerrainDeJeu(figure);
-        Interface f = new Interface(Jeu);
+        IA IA = new IA(Jeu);
+        Interface f = new Interface(Jeu,IA);
     }
         
 }
