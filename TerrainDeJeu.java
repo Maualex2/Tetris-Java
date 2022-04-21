@@ -19,8 +19,19 @@ public class TerrainDeJeu {
         points = 0;
         FormeJouee = null;
         this.FormeStandard = FormeStandard;
-        FormeEnAttente = this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size()));
-        EnJeu = this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size()));       
+        FormeEnAttente = new forme(this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size())));
+        EnJeu = new forme(this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size())));       
+    }
+    public TerrainDeJeu(TerrainDeJeu copie){ //Copie pour l'IA
+        Terrain = new bloc[12][21]; // ligne et colonne
+        for (int i = 0; i < Terrain.length; i++) {
+            for (int j = 0; j < Terrain[i].length; j++) {
+                Terrain[i][j]=copie.Terrain[i][j];
+            }
+        }
+        this.FormeStandard= copie.FormeStandard;
+        EnJeu = new forme(copie.EnJeu);
+        FormeEnAttente = new forme(copie.FormeEnAttente);
     }
 
 
@@ -66,7 +77,7 @@ public class TerrainDeJeu {
         EnJeu.origine[0]=6;//Remet l'origine en place
         EnJeu.origine[1]=0;
         EnJeu=FormeEnAttente;
-        FormeEnAttente = this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size()));
+        FormeEnAttente = new forme(this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size())));
     }
 
     public void bougerDroite(){
@@ -101,6 +112,11 @@ public class TerrainDeJeu {
               EnJeu.gauche();
 
             }
+        }
+    }
+    public void miseAGauche() {
+        for (int z = 0; z < 12; ++z) {
+        bougerGauche();
         }
     }
 
@@ -138,6 +154,7 @@ public class TerrainDeJeu {
         }
         
     }
+
     
     public void tourner(){
         forme temp= new forme(EnJeu);
@@ -157,5 +174,10 @@ public class TerrainDeJeu {
             }
         }
     }
-
+    public void DescenteInstantane(){
+        int temp = points;
+        do {
+            descendre();
+        } while (temp==points);
+    }
 }

@@ -170,21 +170,21 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     public void keyTyped(KeyEvent e) {
         char caractere = e.getKeyChar();
         System.out.println("CAPTER");
-        if(((int)caractere==81)||(int)caractere==113 && iChrono>0){
+        if((((int)caractere==81)||(int)caractere==113) && iChrono>0){
             //Defilement.stop();
             Jeu.bougerGauche();
             GraphiqueTerrain.repaint();
             System.out.println("Gauche");
             //Defilement.start();
         }
-        if(((int)caractere==68)||(int)caractere==100 && iChrono>0){
+        if((((int)caractere==68)||(int)caractere==100 )&& iChrono>0){
             //Defilement.stop();
             Jeu.bougerDroite();
             System.out.println("Droite");
             GraphiqueTerrain.repaint();
             //Defilement.start();
         }
-        if(((int)caractere==83)||(int)caractere==115 && iChrono>0){
+        if((((int)caractere==83)||(int)caractere==115 )&& iChrono>0){
             Defilement.stop();
             Jeu.descendre();
             System.out.println("Descendre");
@@ -192,10 +192,17 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
             
             Defilement.start();
         }
-        if(((int)caractere==90)||(int)caractere==122 && iChrono>0){
+        if((((int)caractere==90)||(int)caractere==122 )&& iChrono>0){
             //Defilement.stop();
             Jeu.tourner();
             System.out.println("tourner");
+            GraphiqueTerrain.repaint();
+            //Defilement.start();
+        }
+        if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){
+            //Defilement.stop();
+            Jeu.DescenteInstantane();
+            System.out.println("descente instantané");
             GraphiqueTerrain.repaint();
             //Defilement.start();
         }
