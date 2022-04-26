@@ -62,7 +62,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         //Bouton Start 
         Start = new JButton("Start");
         Stat.add(Start);
-        Start.setBounds(50,200,100,50);
+        Start.setBounds(50,200,110,50);
         Start.setLayout(null);
         Start.setBackground(new Color(245,0,242)); // rose
         Start.setFont(new Font("Arial", Font.BOLD, 25));
