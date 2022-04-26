@@ -41,8 +41,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         ScoreMax=0;
         ScoreMax();
         
-        this.getContentPane().setBackground(Color.BLACK);
-
+        Container c = getContentPane();
+        c.setBackground(Color.BLUE);
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //GraphiqueTerrain de jeu
