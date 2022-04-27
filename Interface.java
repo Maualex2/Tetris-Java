@@ -42,7 +42,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         ScoreMax();
         
         Container c = getContentPane();
-        c.setBackground(Color.BLUE);
+        c.setBackground(Color.RED);
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
