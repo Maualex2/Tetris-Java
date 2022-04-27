@@ -122,13 +122,15 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     public void actionPerformed(ActionEvent e){
    
         if (e.getSource() == Start) {
-            Musique = new Son();
+            
               if (Chrono.isRunning()) { //chrono en route
                     Chrono.stop(); 
                     Defilement.stop();
+                    Musique.stopSon();
                     Start.setText("Start");
          } else {
 		   //démarrer le jeu
+           Musique = new Son();
             Start.setText("Pause");
             this.requestFocus();
            Chrono.start();

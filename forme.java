@@ -16,8 +16,15 @@ public class forme{
 
     public forme(forme f){ // Permet de faire des copies de forme
         this.couleur=f.couleur;
-        this.Coordonnees=f.Coordonnees;
-        this.origine=f.origine;
+        int [][] tab = new int[f.Coordonnees.length][f.Coordonnees[0].length];
+        for (int i = 0; i < tab.length; i++) {
+            for (int j = 0; j < tab[i].length; j++) {
+                tab[i][j]=f.Coordonnees[i][j];
+            }
+        }
+        this.Coordonnees=tab;
+        int [] or = {f.origine[0],f.origine[1]};
+        this.origine= or;
         this.nom=f.nom;
 
     }

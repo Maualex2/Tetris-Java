@@ -33,6 +33,7 @@ public class TerrainDeJeu {
         this.FormeStandard= copie.FormeStandard;
         EnJeu = new forme(copie.EnJeu);
         FormeEnAttente = new forme(copie.FormeEnAttente);
+        points=copie.points;
     }
 
 
