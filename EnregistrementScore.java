@@ -83,5 +83,6 @@ public class EnregistrementScore extends JFrame implements ActionListener{
                 System.out.println("Message " + e);
             }
             this.dispose();
+            System.exit(0);
         }   
 }
