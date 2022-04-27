@@ -1,8 +1,8 @@
 public class IA {
-    TerrainDeJeu Terrain;
+    TerrainDeJeu Jeu;
 
     public IA(TerrainDeJeu Terrain) {
-        this.Terrain = Terrain;
+        this.Jeu = Terrain;
     }
 
     public void joue1Coup() {
@@ -17,10 +17,12 @@ public class IA {
                 for (int nbDeplacementsDroite = 0; nbDeplacementsDroite <= 12;++nbDeplacementsDroite) {
                      // Itere tous les deplacements possibles
                 
-                    copieControleurPlateau = new TerrainDeJeu(Terrain);// Creer une copie du Terrain
+                    copieControleurPlateau = new TerrainDeJeu(Jeu);// Creer une copie du Terrain
                     // Teste le coup sur la copie du controleur
+                    
                     for (int i = 0; i < nbRotationsDroite; ++i) {
                         copieControleurPlateau.tourner();
+                        //System.out.println(copieControleurPlateau.EnJeu.Coordonnees[1][0]);
                     }
                     copieControleurPlateau.miseAGauche();
                     for (int i = 0; i < nbDeplacementsDroite; ++i) {
@@ -28,6 +30,7 @@ public class IA {
                     }
                     copieControleurPlateau.DescenteInstantane();
                     // Evalue le coup
+                    
                     evaluation = evaluation(copieControleurPlateau);
                     // Sauvegarde le coup si meilleur
                     if (evaluation > meilleureEvaluation) {
@@ -37,17 +40,44 @@ public class IA {
                     }
                 }
             }
+            
             for (int i = 0; i < meilleurNbRotationsDroite; i++) {
-                Terrain.tourner();
-                }
-                Terrain.miseAGauche();
-                for (int i = 0; i < meilleurNbDeplacementsDroite; i++) {
-                Terrain.bougerDroite();
-                }
-                Terrain.DescenteInstantane();
+                Jeu.tourner();
+            }
+            Jeu.miseAGauche();
+            for (int i = 0; i < meilleurNbDeplacementsDroite; i++) {
+                Jeu.bougerDroite();
+            }
+            Jeu.DescenteInstantane();
         }
 
     public int evaluation(TerrainDeJeu f) {
-        return f.hauteur * 5 + f.points;
+        int nbcaseinitiale = 0;
+        int nbcasefinal = 0;
+        /* for (int i = 0; i < f.Terrain[0].length; i++) {
+            for (int j = 0; j < f.Terrain.length; j++) {
+                if (f.Terrain[j][i].vide==false) {
+                    nbcasefinal++;
+                }
+            }
+        }
+        for (int i = 0; i < Jeu.Terrain[0].length; i++) {
+            for (int j = 0; j < Jeu.Terrain.length; j++) {
+                if (Jeu.Terrain[j][i].vide==false) {
+                    nbcasefinal++;
+                }
+            }
+        }
+        if ((Math.abs(nbcasefinal-nbcaseinitiale)>20)){
+            return 100000000;
+        } */
+        if (Math.abs(f.points-Jeu.points)>10) {
+            System.out.println(Jeu.points);
+            System.out.println(f.points);
+            System.out.println("ICI");
+            return 1000000;
+        }
+        return  f.points + (f.EnJeu.Coordonnees[0][1]+f.hauteur)+(f.EnJeu.Coordonnees[1][1]+f.hauteur)+(f.EnJeu.Coordonnees[2][1]+f.hauteur)+(f.EnJeu.Coordonnees[3][1]+f.hauteur);
     }
+    
 }

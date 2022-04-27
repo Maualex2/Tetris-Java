@@ -71,6 +71,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Start.setFont(new Font("Arial", Font.BOLD, 25));
         Start.addActionListener(this); 
         
+        //Logo du jeu
     
         //Score
 		Score=new JLabel("Score : " + Jeu.points);  
@@ -122,13 +123,15 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     public void actionPerformed(ActionEvent e){
    
         if (e.getSource() == Start) {
-            Musique = new Son();
+            
               if (Chrono.isRunning()) { //chrono en route
                     Chrono.stop(); 
                     Defilement.stop();
+                    Musique.stopSon();
                     Start.setText("Start");
          } else {
 		   //démarrer le jeu
+           Musique = new Son();
             Start.setText("Pause");
             this.requestFocus();
            Chrono.start();
@@ -207,7 +210,14 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){
             //Defilement.stop();
             IA.joue1Coup();
-            System.out.println("descente instantané");
+            //System.out.println("coup IA");
+            GraphiqueTerrain.repaint();
+            //Defilement.start();
+        }
+        if((((int)caractere==69)||(int)caractere==101)&& iChrono>0){
+            //Defilement.stop();
+            Jeu.DescenteInstantane();
+            //System.out.println("descente instantané");
             GraphiqueTerrain.repaint();
             //Defilement.start();
         }
