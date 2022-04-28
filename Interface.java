@@ -76,7 +76,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     
         //Score
 		Score=new JLabel("Score : " + Jeu.points);  
-		Score.setBounds(50,120, 100, 50);  
+		Score.setBounds(50,120, 110, 50);  
+        Score.setForeground(Color.red); 
+        Score.setFont(new Font("Arial", Font.BOLD, 25)); 
 		Stat.add(Score);
 
 
