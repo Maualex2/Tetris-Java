@@ -40,7 +40,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         iChrono=0;
         Jeu=jeu;
         setSize(800,900);
-        setLocation(200, 100);
+        setLocation(200, 20);
         niveau=0;
         ScoreMax=0;
         ScoreMax();
@@ -61,14 +61,14 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Stat = new JPanel();
         Stat.setLayout(null);
         Stat.setBounds(480,300,200,350);
-        Stat.setBackground(Color.cyan);
+        Stat.setBackground(Color.blue);
 
         //Bouton Start 
         Start = new JButton("Start");
         Stat.add(Start);
         Start.setBounds(50,200,110,50);
         Start.setLayout(null);
-        Start.setBackground(new Color(245,0,242)); // rose
+        Start.setBackground(Color.red); 
         Start.setFont(new Font("Arial", Font.BOLD, 25));
         Start.addActionListener(this); 
         
@@ -87,7 +87,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         affChrono = new JLabel("Temps :");
         affChrono.setBounds(20, 50, 150, 50);
         affChrono.setBackground(Color.GREEN);
-        affChrono.setForeground(new Color(245,0,242)); // rose
+        affChrono.setForeground(Color.red); 
         affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
 		Stat.add(affChrono);
 
@@ -95,7 +95,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Regles = new JButton("Règles");
         Regles.setBounds(30,270,150,50);
         Regles.setLayout(null);
-        Regles.setBackground(new Color(245,0,242));
+        Regles.setBackground(Color.red);
         Regles.setFont(new Font("Arial", Font.BOLD, 25));
         Regles.addActionListener(this); 
         Stat.add(Regles);
