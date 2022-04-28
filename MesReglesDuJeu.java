@@ -10,14 +10,13 @@ public class MesReglesDuJeu extends JFrame{
     JTextArea lesTouches;
     JLabel LigneComp;
     JTextArea complete;
-    JLabel FinduJeu;
     JTextArea perdre;
     JTextArea battezVotreScore;
 
     public MesReglesDuJeu  (){
         super("Règle du Tetrinsa");
-        setSize(500,600);
-        setLocation(1000, 100);
+        setSize(500,700);
+        setLocation(1000, 50);
         
         conteneur = new JPanel();
 		conteneur.setLayout(null);
@@ -27,17 +26,17 @@ public class MesReglesDuJeu extends JFrame{
         // logo
         logo = new JLabel(new ImageIcon("./logo.png"));
 		logo.setSize(300,80);
-		logo.setLocation(100,20);
+		logo.setLocation(100,10);
 
         //Texte Objectif
-        Objectif=new JTextArea("Bienvenue à Tetrinsa! Nous sommes heureux de vous faire découvrir le jeu du Tetris! L'objectif est simple : Faire le score le plus élevé en un minimum de temps."+"\n"+" Le plateau de jeu se compose en trois parties: la zone score avec le bouton start/pause qui permettra de lancer votre partie ou de la mettre en pause; le plateau de jeu où vous suivrez l'évolution de votre partie et la pièce en attente qui présente la prochaine pièce jouée." );
+        Objectif=new JTextArea("Bienvenue à Tetrinsa! Nous sommes heureux de vous faire découvrir le jeu du Tetris! L'objectif est simple : Faire le score le plus élevé en un minimum de temps."+"\n"+" Le plateau de jeu se compose en trois parties: -la zone score avec le bouton start et pause qui permettra de lancer votre partie ou de la mettre en pause;"+"\n"+" -Le plateau de jeu où vous suivrez l'évolution de votre partie "+"\n"+"-Et la pièce en attente qui présente la prochaine pièce jouée." );
 		Objectif.setBounds(20,120,450,100);
 		Objectif.setBackground(Color.red);
 		Objectif.setForeground(Color.white);
         Objectif.setLineWrap(true);
 
         // ligneComplete
-        complete =new JTextArea(" Pour cela, vous devez former des lignes complètes. Complèter la ligne la fera automatiquement disparaitre et vous fera gagner des points. Compléter plusieurs lignes fera doubler le nombre de points gagné. ");
+        complete =new JTextArea(" Pour gagner des points, vous devez former des lignes complètes. Complèter la ligne la fera automatiquement disparaitre. Compléter plusieurs lignes fera doubler le nombre de points gagné. ");
         complete.setBounds(20,230,450,60);
 		complete.setBackground(Color.red);
 		complete.setForeground(Color.white);
@@ -53,13 +52,25 @@ public class MesReglesDuJeu extends JFrame{
 		LigneComp2.setLocation(250,300);
 
         //déplacement des touches
-        lesTouches =new JTextArea(" Pour déplacer les tétrisimos, vous devez utiliser les touches D,S,Q,Z,A."+"\n"+" D sert à déplacer la pièce sur la droit, "+"\n"+"Q sur la gauche"+"\n"+" Z sert à tourner de 90° la pièce"+"\n"+" La touche S sert à accélerer la descente "+"\n"+"A permettra de faire un coup automatique gérer par une IA");
-        lesTouches.setBounds(20,400,480,100);
+        lesTouches =new JTextArea(" Pour guidez les tétrisimos, vous utiliserez les touches D,S,Q,Z,A."+"\n"+" -D sert à déplacer la pièce sur la droit, "+"\n"+"-Q sert à la déplacer sur la gauche"+"\n"+" -Z sert à tourner de 90° la pièce"+"\n"+" -La touche S sert à accélerer la descente "+"\n"+"-A permettra de faire un coup automatique généré par une IA");
+        lesTouches.setBounds(20,400,450,100);
 		lesTouches.setBackground(Color.red);
 		lesTouches.setForeground(Color.white);
         lesTouches.setLineWrap(true);
 
-        
+        // perdre
+        perdre=new JTextArea("Vous perdez quand un de vos tétriminos se pose sur la dernière ligne du jeu."+"\n"+" Faites Attention aux temps car toutes les 20 secondes, la vitesse de jeu accèlere.Gagnez donc un max de points le plus rapidement possible.");
+        perdre.setBounds(20,510,450,50);
+		perdre.setBackground(Color.red);
+		perdre.setForeground(Color.white);
+        perdre.setLineWrap(true);
+
+        //battez votre score
+        battezVotreScore=new JTextArea("N'hésitez plus et essayez de battre votre score pour atteindre le podium. N'oubliez pas d'enregsitrer votre nom à la fin de la partie dans la nouvelle fenêtre. "+"\n"+"Vous connaissez maintenant tout du jeu. Allez donc vous amusez et que le meilleur gagne!");
+        battezVotreScore.setBounds(20,580,450,70);
+		battezVotreScore.setBackground(Color.red);
+		battezVotreScore.setForeground(Color.white);
+        battezVotreScore.setLineWrap(true);
 
         //conteneur.add(logo);
         conteneur.add(Objectif);
@@ -68,6 +79,8 @@ public class MesReglesDuJeu extends JFrame{
         conteneur.add(lesTouches);
         conteneur.add(LigneComp);
         conteneur.add(LigneComp2);
+        conteneur.add(perdre);
+        conteneur.add(battezVotreScore);
         add(conteneur);
 		
 		setVisible(false);
