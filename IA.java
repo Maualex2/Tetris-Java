@@ -72,9 +72,6 @@ public class IA {
             return 100000000;
         } */
         if (Math.abs(f.points-Jeu.points)>10) {
-            System.out.println(Jeu.points);
-            System.out.println(f.points);
-            System.out.println("ICI");
             return 1000000;
         }
         return  f.points + (f.EnJeu.Coordonnees[0][1]+f.hauteur)+(f.EnJeu.Coordonnees[1][1]+f.hauteur)+(f.EnJeu.Coordonnees[2][1]+f.hauteur)+(f.EnJeu.Coordonnees[3][1]+f.hauteur);
