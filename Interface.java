@@ -54,13 +54,13 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         //GraphiqueListedAttente
         GraphiqueListedAttente= new GraphiqueListedAttente(jeu);
         GraphiqueListedAttente.setLayout(null);
-        GraphiqueListedAttente.setBounds(480,50,250,200);
+        GraphiqueListedAttente.setBounds(480,150,250,200);
         GraphiqueListedAttente.setBackground(Color.cyan);
 
         //Stat 
         Stat = new JPanel();
         Stat.setLayout(null);
-        Stat.setBounds(480,300,200,350);
+        Stat.setBounds(480,400,200,350);
         Stat.setBackground(Color.blue);
 
         //Bouton Start 
@@ -181,27 +181,25 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 
     public void keyTyped(KeyEvent e) {
         char caractere = e.getKeyChar();
-        System.out.println("CAPTER");
         if((((int)caractere==81)||(int)caractere==113) && iChrono>0){
             //Defilement.stop();
             Jeu.bougerGauche();
             GraphiqueTerrain.repaint();
-            System.out.println("Gauche");
+            //System.out.println("Gauche");
             //Defilement.start();
         }
         if((((int)caractere==68)||(int)caractere==100 )&& iChrono>0){
             //Defilement.stop();
             Jeu.bougerDroite();
-            System.out.println("Droite");
+            //System.out.println("Droite");
             GraphiqueTerrain.repaint();
             //Defilement.start();
         }
         if((((int)caractere==83)||(int)caractere==115 )&& iChrono>0){
             Defilement.stop();
             Jeu.descendre();
-            System.out.println("Descendre");
+            //System.out.println("Descendre");
             GraphiqueTerrain.repaint();
-            
             Defilement.start();
         }
         if((((int)caractere==90)||(int)caractere==122 )&& iChrono>0){
