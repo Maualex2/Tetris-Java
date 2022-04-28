@@ -8,7 +8,7 @@ public class GraphiqueTerrain extends JPanel {
 		this.Jeu = Jeu;
 		setLayout(null);
 		setSize(120*3+1,210*3+1); 
-		setLocation(50,50); 
+		setLocation(50,150); 
 	}	
 	
 	public void paint(Graphics g){ 
