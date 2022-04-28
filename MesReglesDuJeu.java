@@ -24,7 +24,7 @@ public class MesReglesDuJeu extends JFrame{
 		conteneur.setBackground(Color.black);
 
         // logo
-        logo = new JLabel(new ImageIcon("./logo.png"));
+        logo = new JLabel(new ImageIcon("./logo300x114.png"));
 		logo.setSize(300,80);
 		logo.setLocation(100,10);
 
