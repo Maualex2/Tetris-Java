@@ -30,14 +30,14 @@ public class MesReglesDuJeu extends JFrame{
 
         //Texte Objectif
         Objectif=new JTextArea("Bienvenue à Tetrinsa! Nous sommes heureux de vous faire découvrir le jeu du Tetris! L'objectif est simple : Faire le score le plus élevé en un minimum de temps."+"\n"+" Le plateau de jeu se compose en trois parties: -la zone score avec le bouton start et pause qui permettra de lancer votre partie ou de la mettre en pause;"+"\n"+" -Le plateau de jeu où vous suivrez l'évolution de votre partie "+"\n"+"-Et la pièce en attente qui présente la prochaine pièce jouée." );
-		Objectif.setBounds(20,120,450,100);
+		Objectif.setBounds(20,100,450,100);
 		Objectif.setBackground(Color.red);
 		Objectif.setForeground(Color.white);
         Objectif.setLineWrap(true);
 
         // ligneComplete
-        complete =new JTextArea(" Pour gagner des points, vous devez former des lignes complètes. Complèter la ligne la fera automatiquement disparaitre. Compléter plusieurs lignes fera doubler le nombre de points gagné. ");
-        complete.setBounds(20,230,450,60);
+        complete =new JTextArea(" Pour gagner des points, vous devez former des lignes complètes."+"\n"+" Complèter la ligne la fera automatiquement disparaitre."+"\n"+" Compléter plusieurs lignes fera doubler le nombre de points gagné. ");
+        complete.setBounds(20,220,450,60);
 		complete.setBackground(Color.red);
 		complete.setForeground(Color.white);
         complete.setLineWrap(true);
@@ -59,15 +59,15 @@ public class MesReglesDuJeu extends JFrame{
         lesTouches.setLineWrap(true);
 
         // perdre
-        perdre=new JTextArea("Vous perdez quand un de vos tétriminos se pose sur la dernière ligne du jeu."+"\n"+" Faites Attention aux temps car toutes les 20 secondes, la vitesse de jeu accèlere.Gagnez donc un max de points le plus rapidement possible.");
+        perdre=new JTextArea("Vous perdez quand un de vos tétriminos se pose sur la dernière ligne du jeu."+"\n"+" Faites attention aux temps car toutes les 20 secondes, la vitesse de jeu accèlere."+"\n"+"Gagnez donc un max de points le plus rapidement possible.");
         perdre.setBounds(20,510,450,50);
 		perdre.setBackground(Color.red);
 		perdre.setForeground(Color.white);
         perdre.setLineWrap(true);
 
         //battez votre score
-        battezVotreScore=new JTextArea("N'hésitez plus et essayez de battre votre score pour atteindre le podium. N'oubliez pas d'enregsitrer votre nom à la fin de la partie dans la nouvelle fenêtre. "+"\n"+"Vous connaissez maintenant tout du jeu. Allez donc vous amusez et que le meilleur gagne!");
-        battezVotreScore.setBounds(20,580,450,70);
+        battezVotreScore=new JTextArea("N'hésitez plus et essayez de battre votre score pour atteindre le podium. N'oubliez pas d'enregsitrer votre nom à la fin de la partie dans la nouvelle fenêtre. "+"\n"+"Vous connaissez maintenant tout du jeu."+"\n"+" Allez donc vous amusez et que le meilleur gagne!");
+        battezVotreScore.setBounds(20,570,450,70);
 		battezVotreScore.setBackground(Color.red);
 		battezVotreScore.setForeground(Color.white);
         battezVotreScore.setLineWrap(true);
