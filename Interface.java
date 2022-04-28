@@ -40,7 +40,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         iChrono=0;
         Jeu=jeu;
         setSize(800,900);
-        setLocation(200, 20);
+        setLocation(200, 0);
         niveau=0;
         ScoreMax=0;
         ScoreMax();
@@ -73,10 +73,12 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Start.addActionListener(this); 
         
         //Logo du jeu
-    
+        JLabel logo = new JLabel(new ImageIcon("./logo150.png"));
+		logo.setSize(600,100);
+		logo.setLocation(100,10);
         //Score
 		Score=new JLabel("Score : " + Jeu.points);  
-		Score.setBounds(50,120, 110, 50);  
+		Score.setBounds(50,120, 150, 50);  
         Score.setForeground(Color.red); 
         Score.setFont(new Font("Arial", Font.BOLD, 25)); 
 		Stat.add(Score);
@@ -110,6 +112,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Page.add(GraphiqueTerrain);
         Page.add(GraphiqueListedAttente);
         Page.add(Stat);
+        Page.add(logo);
         
         this.add(Page);
 
