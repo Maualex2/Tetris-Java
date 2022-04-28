@@ -78,7 +78,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 		logo.setLocation(100,10);
         //Score
 		Score=new JLabel("Score : " + Jeu.points);  
-		Score.setBounds(50,120, 150, 50);  
+		Score.setBounds(50,70, 150, 50);  
         Score.setForeground(Color.red); 
         Score.setFont(new Font("Arial", Font.BOLD, 25)); 
 		Stat.add(Score);
@@ -89,11 +89,16 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Defilement= new Timer(700,this);
         
         affChrono = new JLabel("Temps :");
-        affChrono.setBounds(20, 50, 150, 50);
+        affChrono.setBounds(20, 10, 150, 50);
         affChrono.setBackground(Color.GREEN);
         affChrono.setForeground(Color.red); 
         affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
 		Stat.add(affChrono);
+
+        //score max
+        JLabel scoreTextMax= new JLabel("Score max à battre: "+"\n"+" "+ScoreMax+" de "+NomScoreMax);
+        scoreTextMax.setBounds(10,120,200,70);
+        Stat.add(scoreTextMax);
 
         //Règles du jeu
         Regles = new JButton("Règles");
