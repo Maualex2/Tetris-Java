@@ -10,28 +10,28 @@ public class IA {
             int meilleurNbDeplacementsDroite = 0;
             int meilleureEvaluation = -9999;
             int evaluation;
-            TerrainDeJeu copieControleurPlateau;
+            TerrainDeJeu copieTerrain;
 
             for (int nbRotationsDroite = 0; nbRotationsDroite <= 3; ++nbRotationsDroite) { //Iterere toutes les rotations possibles
                 
                 for (int nbDeplacementsDroite = 0; nbDeplacementsDroite <= 12;++nbDeplacementsDroite) {
                      // Itere tous les deplacements possibles
                 
-                    copieControleurPlateau = new TerrainDeJeu(Jeu);// Creer une copie du Terrain
+                    copieTerrain = new TerrainDeJeu(Jeu);// Creer une copie du Terrain
                     // Teste le coup sur la copie du controleur
                     
                     for (int i = 0; i < nbRotationsDroite; ++i) {
-                        copieControleurPlateau.tourner();
+                        copieTerrain.tourner();
                         //System.out.println(copieControleurPlateau.EnJeu.Coordonnees[1][0]);
                     }
-                    copieControleurPlateau.miseAGauche();
+                    copieTerrain.miseAGauche();
                     for (int i = 0; i < nbDeplacementsDroite; ++i) {
-                        copieControleurPlateau.bougerDroite();
+                        copieTerrain.bougerDroite();
                     }
-                    copieControleurPlateau.DescenteInstantane();
+                    copieTerrain.DescenteInstantane();
                     // Evalue le coup
                     
-                    evaluation = evaluation(copieControleurPlateau);
+                    evaluation = evaluation(copieTerrain);
                     // Sauvegarde le coup si meilleur
                     if (evaluation > meilleureEvaluation) {
                         meilleureEvaluation = evaluation;
@@ -72,12 +72,9 @@ public class IA {
             return 100000000;
         } */
         if (Math.abs(f.points-Jeu.points)>10) {
-            System.out.println(Jeu.points);
-            System.out.println(f.points);
-            System.out.println("ICI");
             return 1000000;
         }
-        return  f.points + (f.EnJeu.Coordonnees[0][1]+f.hauteur)+(f.EnJeu.Coordonnees[1][1]+f.hauteur)+(f.EnJeu.Coordonnees[2][1]+f.hauteur)+(f.EnJeu.Coordonnees[3][1]+f.hauteur);
+        return  (f.EnJeu.Coordonnees[0][1]+f.hauteur)+(f.EnJeu.Coordonnees[1][1]+f.hauteur)+(f.EnJeu.Coordonnees[2][1]+f.hauteur)+(f.EnJeu.Coordonnees[3][1]+f.hauteur);
     }
     
 }
