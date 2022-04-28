@@ -19,6 +19,10 @@ public class MesReglesDuJeu extends JFrame{
         setSize(500,600);
         setLocation(1000, 100);
         
+        conteneur = new JPanel();
+		conteneur.setLayout(null);
+		conteneur.setBounds(0,0,500,900) ;
+		conteneur.setBackground(Color.black);
 
         // logo
         logo = new JLabel(new ImageIcon("./logo.png"));
@@ -32,14 +36,9 @@ public class MesReglesDuJeu extends JFrame{
 		Objectif.setForeground(Color.white);
         Objectif.setLineWrap(true);
 
-        // plateau 
-        JLabel plateau = new JLabel(new ImageIcon("./plateau.png"));
-		logo.setSize(300,80);
-		logo.setLocation(250, 200);
-
         // ligneComplete
         complete =new JTextArea(" Pour cela, vous devez former des lignes complètes. Complèter la ligne la fera automatiquement disparaitre et vous fera gagner des points. Compléter plusieurs lignes fera doubler le nombre de points gagné. ");
-        complete.setBounds(20,400,450,60);
+        complete.setBounds(20,230,450,60);
 		complete.setBackground(Color.red);
 		complete.setForeground(Color.white);
         complete.setLineWrap(true);
@@ -47,35 +46,26 @@ public class MesReglesDuJeu extends JFrame{
         // LigneComp
         LigneComp = new JLabel(new ImageIcon("./ligneCompleteAV.JPG"));
 		LigneComp.setSize(200,80);
-		LigneComp.setLocation(30,480);
+		LigneComp.setLocation(30,300);
 
         JLabel LigneComp2 = new JLabel(new ImageIcon("./ligneCompleteAP.JPG"));
 		LigneComp2.setSize(200,80);
-		LigneComp2.setLocation(250,480);
+		LigneComp2.setLocation(250,300);
 
         //déplacement des touches
-        lesTouches =new JTextArea(" Pour déplacer les tétrisimos, vous devez utiliser les touches D,S,Q,Z. D sert à déplacer la pièce sur la droit, Q sur la gauche. Z sert à tourner de 90° la pièce. La touche S sert à accélerer la descente ");
+        lesTouches =new JTextArea(" Pour déplacer les tétrisimos, vous devez utiliser les touches D,S,Q,Z,A."+"\n"+" D sert à déplacer la pièce sur la droit, "+"\n"+"Q sur la gauche"+"\n"+" Z sert à tourner de 90° la pièce"+"\n"+" La touche S sert à accélerer la descente "+"\n"+"A permettra de faire un coup automatique gérer par une IA");
         lesTouches.setBounds(20,400,480,100);
 		lesTouches.setBackground(Color.red);
 		lesTouches.setForeground(Color.white);
         lesTouches.setLineWrap(true);
 
-        conteneur = new JPanel();
-		conteneur.setLayout(null);
-		conteneur.setBounds(0,0,500,900) ;
-		conteneur.setBackground(Color.black);
-
-        //scroll
-        JScrollPane scroll= new JScrollPane(conteneur);
-        scroll.setBounds(0,0,10,400);
-        this.add(scroll);
+        
 
         //conteneur.add(logo);
         conteneur.add(Objectif);
         conteneur.add(complete);
         conteneur.add(logo);
         conteneur.add(lesTouches);
-        conteneur.add(plateau);
         conteneur.add(LigneComp);
         conteneur.add(LigneComp2);
         add(conteneur);
