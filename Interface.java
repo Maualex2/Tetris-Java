@@ -28,6 +28,10 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     int ScoreMax;
     String NomScoreMax;
     IA IA;
+    Icon startIcon;
+    Icon pauseIcon;
+    Icon logoIcon;
+    Icon scoreIcon;
     
 
     public Interface(TerrainDeJeu jeu,IA IA){
@@ -40,9 +44,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         niveau=0;
         ScoreMax=0;
         ScoreMax();
-        
-        Container c = getContentPane();
-        c.setBackground(Color.BLUE);
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -103,6 +104,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Page= new JPanel();
         Page.setLayout(null);
         Page.setBounds(0,0,800,900);
+        Page.setBackground(Color.MAGENTA);
         Page.add(GraphiqueTerrain);
         Page.add(GraphiqueListedAttente);
         Page.add(Stat);
