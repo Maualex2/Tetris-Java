@@ -52,22 +52,22 @@ public class MesReglesDuJeu extends JFrame{
 		LigneComp2.setLocation(250,300);
 
         //déplacement des touches
-        lesTouches =new JTextArea(" Pour guidez les tétrisimos, vous utiliserez les touches D,S,Q,Z,A."+"\n"+" -D sert à déplacer la pièce sur la droit, "+"\n"+"-Q sert à la déplacer sur la gauche"+"\n"+" -Z sert à tourner de 90° la pièce"+"\n"+" -La touche S sert à accélerer la descente "+"\n"+"-A permettra de faire un coup automatique généré par une IA");
-        lesTouches.setBounds(20,400,450,100);
+        lesTouches =new JTextArea(" Pour guidez les tétrisimos, vous utiliserez les touches D,S,Q,Z,A et E."+"\n"+" -D sert à déplacer la pièce sur la droit, "+"\n"+"-Q sert à la déplacer sur la gauche"+"\n"+" -Z sert à tourner de 90° la pièce"+"\n"+" -La touche S sert à accélerer la descente "+"\n"+"-A permettra de faire un coup automatique généré par une IA"+"\n"+"-E permet de faire descendre instantanément la pièce en bas du plateau");
+        lesTouches.setBounds(20,390,450,120);
 		lesTouches.setBackground(Color.red);
 		lesTouches.setForeground(Color.white);
         lesTouches.setLineWrap(true);
 
         // perdre
         perdre=new JTextArea("Vous perdez quand un de vos tétriminos se pose sur la dernière ligne du jeu."+"\n"+" Faites attention aux temps car toutes les 20 secondes, la vitesse de jeu accèlere."+"\n"+"Gagnez donc un max de points le plus rapidement possible.");
-        perdre.setBounds(20,510,450,50);
+        perdre.setBounds(20,520,450,50);
 		perdre.setBackground(Color.red);
 		perdre.setForeground(Color.white);
         perdre.setLineWrap(true);
 
         //battez votre score
         battezVotreScore=new JTextArea("N'hésitez plus et essayez de battre votre score pour atteindre le podium. N'oubliez pas d'enregsitrer votre nom à la fin de la partie dans la nouvelle fenêtre. "+"\n"+"Vous connaissez maintenant tout du jeu."+"\n"+" Allez donc vous amusez et que le meilleur gagne!");
-        battezVotreScore.setBounds(20,570,450,70);
+        battezVotreScore.setBounds(20,580,450,70);
 		battezVotreScore.setBackground(Color.red);
 		battezVotreScore.setForeground(Color.white);
         battezVotreScore.setLineWrap(true);
