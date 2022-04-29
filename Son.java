@@ -17,7 +17,7 @@ public class Son {
 
     public void jouerSon(String cheminAcces) {
 
-         ///Si le fichier audio n'est pas trouvÃ©, l'exception est gÃ©rÃ©e par le catch
+         ///Si le fichier audio n'est pas trouvé, l'exception est gérée par le catch
         try {
             new File(cheminAcces);
             clip = AudioSystem.getClip();

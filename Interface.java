@@ -64,12 +64,13 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Stat.setBackground(Color.blue);
 
         //Bouton Start 
-        Start = new JButton("Start");
+        //Start = new JButton("Start");
+        Start = new JButton("Start",new ImageIcon("./playN.png")) ; 
         Stat.add(Start);
-        Start.setBounds(50,200,110,50);
+        Start.setBounds(100,200,50,50);
         Start.setLayout(null);
-        Start.setBackground(Color.red); 
-        Start.setFont(new Font("Arial", Font.BOLD, 25));
+        //Start.setBackground(Color.red); 
+       // Start.setFont(new Font("Arial", Font.BOLD, 25));
         Start.addActionListener(this); 
         
         //Logo du jeu
