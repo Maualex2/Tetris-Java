@@ -45,6 +45,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         ScoreMax=0;
         ScoreMax();
         
+        Icon startIcon = new ImageIcon("./playN2.png");
+        Icon pauseIcon = new ImageIcon("./pauseN2.png");
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //GraphiqueTerrain de jeu
@@ -65,11 +68,11 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 
         //Bouton Start 
         //Start = new JButton("Start");
-        Start = new JButton("Start",new ImageIcon("./playN.png")) ; 
+        Start = new JButton(startIcon) ; 
         Stat.add(Start);
-        Start.setBounds(100,200,50,50);
+        Start.setBounds(75,200,50,50);
         Start.setLayout(null);
-        //Start.setBackground(Color.red); 
+        Start.setBackground(Color.black); 
        // Start.setFont(new Font("Arial", Font.BOLD, 25));
         Start.addActionListener(this); 
         
@@ -141,11 +144,16 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
                     Chrono.stop(); 
                     Defilement.stop();
                     Musique.stopSon();
-                    Start.setText("Start");
+                   // Start.setText("Start");
+                   Start.setIcon(startIcon);
+                  
          } else {
 		   //démarrer le jeu
            Musique = new Son();
-            Start.setText("Pause");
+           // Start.setText("Pause");
+           Start.setLayout(null);
+           Start.setIcon(pauseIcon);
+          
             this.requestFocus();
            Chrono.start();
            Defilement.start();
