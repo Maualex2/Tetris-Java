@@ -45,8 +45,8 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         ScoreMax=0;
         ScoreMax();
         
-        Icon startIcon = new ImageIcon("./playN2.png");
-        Icon pauseIcon = new ImageIcon("./pauseN2.png");
+       Icon startIcon = new ImageIcon("./playN2.png");
+       Icon pauseIcon = new ImageIcon("./pauseN2.png");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -146,14 +146,14 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
                     Defilement.stop();
                     Musique.stopSon();
                    // Start.setText("Start");
-                   Start.setIcon(startIcon);
+                   Start.setIcon(new ImageIcon("./playN2.png"));
                   
          } else {
 		   //démarrer le jeu
            Musique = new Son();
            // Start.setText("Pause");
            Start.setLayout(null);
-           Start.setIcon(pauseIcon);
+           Start.setIcon(new ImageIcon("./pauseN2.png"));
           
             this.requestFocus();
            Chrono.start();
