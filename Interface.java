@@ -96,8 +96,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 		Stat.add(affChrono);
 
         //score max
-        JLabel scoreTextMax= new JLabel("Score max à battre:"+"\n"+ScoreMax+" de "+NomScoreMax);
+        JLabel scoreTextMax= new JLabel("<html> Score max à battre : <br>"+ScoreMax+" de "+NomScoreMax+"<html>");
         scoreTextMax.setBounds(10,120,200,70);
+        scoreTextMax.setForeground(Color.RED);
         Stat.add(scoreTextMax);
 
         //Règles du jeu
