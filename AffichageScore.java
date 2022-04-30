@@ -9,7 +9,6 @@ public class AffichageScore extends JFrame{
         public AffichageScore() {
             setSize(500,500);
             setLocation(400, 100);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             JLabel j = new JLabel("",SwingConstants.CENTER);
             j.setVerticalAlignment(SwingConstants.CENTER);
             j.setLayout(null);
@@ -24,7 +23,7 @@ public class AffichageScore extends JFrame{
                 BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                 String s = null;
                 while(reader.readLine() != null){
-                    Texte=Texte+reader.readLine()+"\n";
+                    Texte="<html>"+Texte+reader.readLine()+"<br><html>";
                 }
                 input.close();
  
@@ -32,7 +31,7 @@ public class AffichageScore extends JFrame{
                 System.out.println("Message " + e);
             }
             j.setText(Texte);
-            setVisible(true);
+            
         }
             
 }

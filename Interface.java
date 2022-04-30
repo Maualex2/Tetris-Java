@@ -22,8 +22,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     JTextField text;
     int niveau;
     JButton Regles;
-    JButton ScoreP ;
+    JButton ScoreH ;
     MesReglesDuJeu fenetreRegles= new MesReglesDuJeu();
+    AffichageScore Historique = new AffichageScore();
     Son Musique;
     int ScoreMax;
     String NomScoreMax;
@@ -63,9 +64,16 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         //Stat 
         Stat = new JPanel();
         Stat.setLayout(null);
-        Stat.setBounds(480,400,200,350);
+        Stat.setBounds(480,400,250,380);
         Stat.setBackground(Color.blue);
 
+        //Bouton Score
+        ScoreH= new JButton("<html>Historique <br> des scores<html>");
+        ScoreH.setLayout(null);
+        ScoreH.setBounds(150,0,100,60);
+        ScoreH.setBackground(Color.RED);
+        ScoreH.addActionListener(this);
+        Stat.add(ScoreH);
         //Bouton Start 
         //Start = new JButton("Start");
         Start = new JButton(startIcon) ; 
@@ -73,7 +81,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Start.setBounds(75,200,50,50);
         Start.setLayout(null);
         Start.setBackground(Color.black); 
-       // Start.setFont(new Font("Arial", Font.BOLD, 25));
+        // Start.setFont(new Font("Arial", Font.BOLD, 25));
         Start.addActionListener(this); 
         
         //Logo du jeu
@@ -93,7 +101,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Defilement= new Timer(700,this);
         
         affChrono = new JLabel("Temps :");
-        affChrono.setBounds(20, 10, 150, 50);
+        affChrono.setBounds(10, 10, 150, 50);
         affChrono.setBackground(Color.GREEN);
         affChrono.setForeground(Color.red); 
         affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
@@ -188,6 +196,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         }
         if(e.getSource() == Regles) {
             fenetreRegles.setVisible(true);
+        }
+        if (e.getSource()==ScoreH) {
+            Historique.setVisible(true);
         }
      }
     
