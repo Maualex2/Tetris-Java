@@ -46,8 +46,8 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         ScoreMax=0;
         ScoreMax();
         
-       Icon startIcon = new ImageIcon("./playN2.png");
-       Icon pauseIcon = new ImageIcon("./pauseN2.png");
+       Icon startIcon = new ImageIcon("./multimedia/playN2.png");
+       Icon pauseIcon = new ImageIcon("./multimedia/pauseN2.png");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -84,7 +84,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         Start.addActionListener(this); 
         
         //Logo du jeu
-        JLabel logo = new JLabel(new ImageIcon("./logo150.png"));
+        JLabel logo = new JLabel(new ImageIcon("./multimedia/logo150.png"));
 		logo.setSize(600,100);
 		logo.setLocation(100,10);
 
@@ -152,13 +152,13 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
                     Chrono.stop(); 
                     Defilement.stop();
                     Musique.stopSon();
-                    Start.setIcon(new ImageIcon("./playN2.png"));
+                    Start.setIcon(new ImageIcon("./multimedia/playN2.png"));
                   
          } else {
 		   //démarrer le jeu
            Musique = new Son();
            Start.setLayout(null);
-           Start.setIcon(new ImageIcon("./pauseN2.png"));
+           Start.setIcon(new ImageIcon("./multimedia/pauseN2.png"));
           
            this.requestFocus(); // redemande le focus pour le clavier 
            Chrono.start();

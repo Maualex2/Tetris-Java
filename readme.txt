@@ -2,7 +2,7 @@ L'archive ne contient qu'un seul dossier
 Pour jouer au tetris vous devez éxécuter la classe main du dossier
 
 Les fichiers présents sont les suivants :
--score.txt  Contient tout les scores enregistrés
+-score.txt  
 -AffichagScore.java
 -bloc.java
 -EnregistrementScore.java
