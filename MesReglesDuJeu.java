@@ -24,7 +24,7 @@ public class MesReglesDuJeu extends JFrame{
 		conteneur.setBackground(Color.black);
 
         // logo
-        logo = new JLabel(new ImageIcon("./logo300x114.png"));
+        logo = new JLabel(new ImageIcon("./multimedia/logo300x114.png"));
 		logo.setSize(300,80);
 		logo.setLocation(100,10);
 
@@ -43,11 +43,11 @@ public class MesReglesDuJeu extends JFrame{
         complete.setLineWrap(true);
          
         // LigneComp
-        LigneComp = new JLabel(new ImageIcon("./ligneCompleteAV.JPG"));
+        LigneComp = new JLabel(new ImageIcon("./multimedia/ligneCompleteAV.JPG"));
 		LigneComp.setSize(200,80);
 		LigneComp.setLocation(30,300);
 
-        JLabel LigneComp2 = new JLabel(new ImageIcon("./ligneCompleteAP.JPG"));
+        JLabel LigneComp2 = new JLabel(new ImageIcon("./multimedia/ligneCompleteAP.JPG"));
 		LigneComp2.setSize(200,80);
 		LigneComp2.setLocation(250,300);
 

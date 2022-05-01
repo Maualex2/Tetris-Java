@@ -37,7 +37,7 @@ public class TerrainDeJeu {
     }
 
 
-    public void LigneComplete(){ // parcourt le tableau et compte les blocs A VERIFIER
+    public void LigneComplete(){ // parcourt le tableau et compte les blocs sur une seule ligne
         int bonus = 0;
         for (int i = 0; i < Terrain[0].length; i++) {
             int nonvide = 0;
@@ -48,12 +48,12 @@ public class TerrainDeJeu {
             }
             if (nonvide==12){
                 DecaleEnBas(i);
-                bonus++; // j'ai juste fait un bonus pour valoriser les enchainements
+                bonus++; // bonus permettant de gagner plus de points si on fait plusieurs lignes en meme temps
                 this.points=this.points+13*bonus;
             }
         }
     }
-    public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs qui ne sont pas fixes vers le bas à partir d'une ligne que l'on précise
+    public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs vers le bas à partir d'une ligne que l'on précise
         for (int i = ligne; i > 0 ; i--) { //ligne parcourt du bas du tableau jusqu'en haut
             for (int j = 0; j < Terrain.length; j++) { // Colonne
                 Terrain[j][i]=Terrain[j][i-1];
@@ -76,14 +76,12 @@ public class TerrainDeJeu {
     
     public void ajouterForme() {//Change la forme quand elle a atteint le bas 
         points=points+4;
-        hauteur=EnJeu.origine[1];
-        EnJeu.origine[0]=6;//Remet l'origine en place
-        EnJeu.origine[1]=0;
+        hauteur=EnJeu.origine[1]; // Sert juste pour l'IA
         EnJeu=FormeEnAttente;
         FormeEnAttente = new forme(this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size())));
     }
 
-    public void bougerDroite(){
+    public void bougerDroite(){ // Deplace la forme à droite
         boolean libre=true;
         try {
             for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
@@ -100,7 +98,7 @@ public class TerrainDeJeu {
         }
     }
 
-    public void bougerGauche(){
+    public void bougerGauche(){ //Deplace la forme à gauche
         boolean libre=true;
         try {
             for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
@@ -117,16 +115,14 @@ public class TerrainDeJeu {
             }
         }
     }
-    public void miseAGauche() {
+    public void miseAGauche() { // Méthode pour l'IA qui met la forme tout a gauche
         for (int z = 0; z < 12; ++z) {
         bougerGauche();
         }
     }
 
-    public void descendre(){
+    public void descendre(){ //Permet de descendre la forme
         boolean libre=true;
-        //System.out.print(EnJeu.origine[0]);
-        //System.out.println(EnJeu.origine[1]);
         try {
             for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
                     if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]+1].vide==false){
@@ -159,7 +155,7 @@ public class TerrainDeJeu {
     }
 
     
-    public void tourner(){
+    public void tourner(){ //Fait tourner la forme
         forme temp= new forme(EnJeu);
         temp.rotation();
         boolean libre=true;
@@ -177,7 +173,7 @@ public class TerrainDeJeu {
             }
         }
     }
-    public void DescenteInstantane(){
+    public void DescenteInstantane(){ //Fait descendre la forme tout en bas du terrain
         int temp = points;
         do {
             descendre();

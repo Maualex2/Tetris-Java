@@ -6,14 +6,12 @@ import static java.nio.file.StandardOpenOption.*;
 
 public class AffichageScore extends JFrame{
 
-        public AffichageScore() {
+        public AffichageScore() { // Construit la fenetre qui affiche l'historique des parties tout en lisant l'historique dans un fichier txt
             setSize(500,500);
             setLocation(400, 100);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            JLabel j = new JLabel("",SwingConstants.CENTER);
-            j.setVerticalAlignment(SwingConstants.CENTER);
-            j.setLayout(null);
-            this.add(j);
+            //JLabel j = new JLabel("",SwingConstants.CENTER);
+            //j.setVerticalAlignment(SwingConstants.CENTER);
+            JTextArea b = new JTextArea("");
             String Texte="";
             Path chemin = Paths.get("score.txt");
             InputStream input = null;
@@ -31,8 +29,11 @@ public class AffichageScore extends JFrame{
             } catch (IOException e) {
                 System.out.println("Message " + e);
             }
-            j.setText(Texte);
-            setVisible(true);
+            b.append(Texte);
+            b.setEditable(false);
+            JScrollPane j = new JScrollPane(b);
+            j.setBounds(0,0,320,280);
+            this.add(j);
         }
             
 }

@@ -8,7 +8,7 @@ public class Son {
     ///Constructeur de l'objet audio
 
     public Son() {
-        jouerSon("Tetris.wav");
+        jouerSon("multimedia/Tetris.wav");
 
     }
 

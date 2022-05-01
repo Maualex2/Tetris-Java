@@ -5,7 +5,7 @@ public class IA {
         this.Jeu = Terrain;
     }
 
-    public void joue1Coup() {
+    public void joue1Coup() { //Calcul le meilleur coup sur le terrain actuel
             int meilleurNbRotationsDroite = 0;
             int meilleurNbDeplacementsDroite = 0;
             int meilleureEvaluation = -9999;
@@ -52,29 +52,11 @@ public class IA {
         }
 
     public int evaluation(TerrainDeJeu f) {
-        int nbcaseinitiale = 0;
-        int nbcasefinal = 0;
-        /* for (int i = 0; i < f.Terrain[0].length; i++) {
-            for (int j = 0; j < f.Terrain.length; j++) {
-                if (f.Terrain[j][i].vide==false) {
-                    nbcasefinal++;
-                }
-            }
-        }
-        for (int i = 0; i < Jeu.Terrain[0].length; i++) {
-            for (int j = 0; j < Jeu.Terrain.length; j++) {
-                if (Jeu.Terrain[j][i].vide==false) {
-                    nbcasefinal++;
-                }
-            }
-        }
-        if ((Math.abs(nbcasefinal-nbcaseinitiale)>20)){
-            return 100000000;
-        } */
-        if (Math.abs(f.points-Jeu.points)>10) {
+        if (Math.abs(f.points-Jeu.points)>10) { //Regarde si une ligne a disparu
             return 1000000;
         }
-        return  (f.EnJeu.Coordonnees[0][1]+f.hauteur)+(f.EnJeu.Coordonnees[1][1]+f.hauteur)+(f.EnJeu.Coordonnees[2][1]+f.hauteur)+(f.EnJeu.Coordonnees[3][1]+f.hauteur);
+        //sinon calcule un score dépendant de la position des blocs de la forme
+        return  f.points+(f.EnJeu.Coordonnees[0][1]+f.hauteur)+(f.EnJeu.Coordonnees[1][1]+f.hauteur)+(f.EnJeu.Coordonnees[2][1]+f.hauteur)+(f.EnJeu.Coordonnees[3][1]+f.hauteur);
     }
     
 }

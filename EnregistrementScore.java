@@ -16,7 +16,7 @@ public class EnregistrementScore extends JFrame implements ActionListener{
         JPanel Page;
         JLabel info;
 
-        public EnregistrementScore(int Score){
+        public EnregistrementScore(int Score){ // Construit la fenetre permettant d'enregistrer  son score
             this.Score=Score;
             setSize(300,300);
             setLocation(400, 100);
@@ -59,11 +59,11 @@ public class EnregistrementScore extends JFrame implements ActionListener{
             
         }
         
-        public void enregistrer(){
+        public void enregistrer(){ //Ecrit dans le fichier txt
             Path chemin = Paths.get("score.txt");
             String content = "Score : "+Score+" par "+nom+" le "+Date+"\n";
  
-            // convertit String en un tableau d'octets
+            // convertit content en un tableau d'octets
             byte[] data = content.getBytes();
  
             OutputStream output = null;
