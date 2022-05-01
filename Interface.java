@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.plaf.TextUI;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -34,7 +36,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     Icon logoIcon;
     Icon scoreIcon;
     
-
     public Interface(TerrainDeJeu jeu,IA IA){
         super("Tetris");
         this.IA=IA;
@@ -172,9 +173,14 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
             
         }
         if(e.getSource()== Defilement){ // Fait défiler les pièces
+            if(IA.isIaEngaged()){
+                IA.joue1Coup();
+                Jeu.DescenteInstantane();
+            }
+            else{
             Jeu.descendre();
             GraphiqueListedAttente.repaint();
-
+            }
             if (Jeu.perdu()){
                 Defilement.stop();
                 Chrono.stop();
@@ -226,7 +232,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
             GraphiqueTerrain.repaint();
         }
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){ //Touche A
+            //removeKeyListener(this);
             IA.joue1Coup();
+            Jeu.DescenteInstantane();
             GraphiqueTerrain.repaint();
         }
         if((((int)caractere==69)||(int)caractere==101)&& iChrono>0){ //Touche E
