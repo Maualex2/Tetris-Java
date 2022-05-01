@@ -1,4 +1,7 @@
 import java.util.LinkedList;
+
+import javax.swing.text.html.HTMLDocument.RunElement;
+
 import java.awt.Color;
 
 public class TerrainDeJeu {
@@ -9,7 +12,7 @@ public class TerrainDeJeu {
     public forme FormeEnAttente;
     public forme EnJeu;
     public int hauteur;
-
+    
     public TerrainDeJeu(LinkedList<forme> FormeStandard){
         Terrain = new bloc[12][21]; // ligne et colonne
         for (int i = 0; i < Terrain.length; i++) {
@@ -53,6 +56,7 @@ public class TerrainDeJeu {
             }
         }
     }
+
     public void DecaleEnBas(int ligne){ // c'est une méthode qui décale les blocs vers le bas à partir d'une ligne que l'on précise
         for (int i = ligne; i > 0 ; i--) { //ligne parcourt du bas du tableau jusqu'en haut
             for (int j = 0; j < Terrain.length; j++) { // Colonne
