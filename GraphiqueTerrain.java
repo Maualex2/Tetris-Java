@@ -4,7 +4,7 @@ import java.awt.*;
 public class GraphiqueTerrain extends JPanel {
     public TerrainDeJeu Jeu;
 
-    public GraphiqueTerrain (TerrainDeJeu Jeu){
+    public GraphiqueTerrain (TerrainDeJeu Jeu){ //Affiche le terrain de jeu
 		this.Jeu = Jeu;
 		setLayout(null);
 		setSize(120*3+1,210*3+1); 

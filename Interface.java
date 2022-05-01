@@ -51,17 +51,17 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        //GraphiqueTerrain de jeu
+        //Affichage du terrain
         GraphiqueTerrain = new GraphiqueTerrain(Jeu);
         GraphiqueTerrain.setLayout(null);
 
-        //GraphiqueListedAttente
+        //Affichage de la liste d'attente
         GraphiqueListedAttente= new GraphiqueListedAttente(jeu);
         GraphiqueListedAttente.setLayout(null);
         GraphiqueListedAttente.setBounds(480,150,250,200);
         GraphiqueListedAttente.setBackground(Color.cyan);
 
-        //Stat 
+        //Panel des statistiques
         Stat = new JPanel();
         Stat.setLayout(null);
         Stat.setBounds(480,400,250,380);
@@ -74,46 +74,45 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         ScoreH.setBackground(Color.RED);
         ScoreH.addActionListener(this);
         Stat.add(ScoreH);
+
         //Bouton Start 
-        //Start = new JButton("Start");
         Start = new JButton(startIcon) ; 
         Stat.add(Start);
         Start.setBounds(75,200,50,50);
         Start.setLayout(null);
         Start.setBackground(Color.black); 
-        // Start.setFont(new Font("Arial", Font.BOLD, 25));
         Start.addActionListener(this); 
         
         //Logo du jeu
         JLabel logo = new JLabel(new ImageIcon("./logo150.png"));
 		logo.setSize(600,100);
 		logo.setLocation(100,10);
-        //Score
+
+        //Affichage du score
 		Score=new JLabel("Score : " + Jeu.points);  
-		Score.setBounds(50,70, 150, 50);  
+		Score.setBounds(10,70, 150, 50);  
         Score.setForeground(Color.red); 
         Score.setFont(new Font("Arial", Font.BOLD, 25)); 
 		Stat.add(Score);
 
+        //Chronomètre et fréquence de déplacement vers le bas 
 
-        //Chrono
         Chrono = new Timer(1000,this);
         Defilement= new Timer(700,this);
-        
-        affChrono = new JLabel("Temps :");
+        affChrono = new JLabel("Temps : "+iChrono);
         affChrono.setBounds(10, 10, 150, 50);
         affChrono.setBackground(Color.GREEN);
         affChrono.setForeground(Color.red); 
         affChrono.setFont(new Font("Arial", Font.BOLD, 25));  
 		Stat.add(affChrono);
 
-        //score max
+        //Affichage du score à battre
         JLabel scoreTextMax= new JLabel("<html> Score max à battre : <br>"+ScoreMax+" de "+NomScoreMax+"<html>");
         scoreTextMax.setBounds(10,120,200,70);
         scoreTextMax.setForeground(Color.RED);
         Stat.add(scoreTextMax);
 
-        //Règles du jeu
+        //Bouton d'affichage des règles du jeu
         Regles = new JButton("Règles");
         Regles.setBounds(30,270,150,50);
         Regles.setLayout(null);
@@ -135,12 +134,12 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         this.add(Page);
 
 
-        //Clavier
-        this.setFocusable(true);//permet de suivre le clavier sur toute la fenetre
-        this.setFocusTraversalKeysEnabled(false);//jsp
+        //Clavier permet de suivre le clavier sur toute la fenetre
+        this.setFocusable(true);
+        this.setFocusTraversalKeysEnabled(false);
         addKeyListener(this);
 
-        
+        //Rend visible la fenetre 
         setVisible(true);
 
     }
@@ -153,32 +152,29 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
                     Chrono.stop(); 
                     Defilement.stop();
                     Musique.stopSon();
-                   // Start.setText("Start");
-                   Start.setIcon(new ImageIcon("./playN2.png"));
+                    Start.setIcon(new ImageIcon("./playN2.png"));
                   
          } else {
 		   //démarrer le jeu
            Musique = new Son();
-           // Start.setText("Pause");
            Start.setLayout(null);
            Start.setIcon(new ImageIcon("./pauseN2.png"));
           
-            this.requestFocus();
+           this.requestFocus(); // redemande le focus pour le clavier 
            Chrono.start();
            Defilement.start();
            affChrono.setText("Temps : "+String.valueOf(iChrono));
 		    }
         }
-        if(e.getSource()== Chrono){
+        if(e.getSource()== Chrono){ //Incrémente le compteur de temps
             iChrono++;
             affChrono.setText("Temps :"+String.valueOf(iChrono));
-            Score.setText("Score :" + Jeu.points); 
             
         }
-        if(e.getSource()== Defilement){
+        if(e.getSource()== Defilement){ // Fait défiler les pièces
             Jeu.descendre();
-            
             GraphiqueListedAttente.repaint();
+
             if (Jeu.perdu()){
                 Defilement.stop();
                 Chrono.stop();
@@ -187,17 +183,17 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
                 EnregistrementScore i = new EnregistrementScore(Jeu.points);
             }
             GraphiqueTerrain.repaint();
-            if(iChrono%20==0 && niveau!=16){
+            if(iChrono%20==0 && niveau!=16){ // Permet d'accelerer la chute des pièces en fonction du temps
                 niveau++;
                 Defilement = new Timer(700-niveau*30, this);
                 Defilement.start();
             }
             Score.setText("Score :" + Jeu.points); 
         }
-        if(e.getSource() == Regles) {
+        if(e.getSource() == Regles) { //Affiche la fenetre des règles
             fenetreRegles.setVisible(true);
         }
-        if (e.getSource()==ScoreH) {
+        if (e.getSource()==ScoreH) { //Affiche l'historique des scores
             Historique.setVisible(true);
         }
      }
@@ -210,47 +206,32 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 
     public void keyTyped(KeyEvent e) {
         char caractere = e.getKeyChar();
-        if((((int)caractere==81)||(int)caractere==113) && iChrono>0){
-            //Defilement.stop();
+        if((((int)caractere==81)||(int)caractere==113) && iChrono>0){ //Touche Q
             Jeu.bougerGauche();
             GraphiqueTerrain.repaint();
-            //System.out.println("Gauche");
-            //Defilement.start();
         }
-        if((((int)caractere==68)||(int)caractere==100 )&& iChrono>0){
-            //Defilement.stop();
+        if((((int)caractere==68)||(int)caractere==100 )&& iChrono>0){ //Touche D
             Jeu.bougerDroite();
-            //System.out.println("Droite");
             GraphiqueTerrain.repaint();
-            //Defilement.start();
         }
-        if((((int)caractere==83)||(int)caractere==115 )&& iChrono>0){
+        if((((int)caractere==83)||(int)caractere==115 )&& iChrono>0){ //Touche S
             Defilement.stop();
             Jeu.descendre();
-            //System.out.println("Descendre");
             GraphiqueTerrain.repaint();
             Defilement.start();
         }
-        if((((int)caractere==90)||(int)caractere==122 )&& iChrono>0){
-            //Defilement.stop();
+        if((((int)caractere==90)||(int)caractere==122 )&& iChrono>0){ //Touche Z
             Jeu.tourner();
             System.out.println("tourner");
             GraphiqueTerrain.repaint();
-            //Defilement.start();
         }
-        if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){
-            //Defilement.stop();
+        if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){ //Touche A
             IA.joue1Coup();
-            //System.out.println("coup IA");
             GraphiqueTerrain.repaint();
-            //Defilement.start();
         }
-        if((((int)caractere==69)||(int)caractere==101)&& iChrono>0){
-            //Defilement.stop();
+        if((((int)caractere==69)||(int)caractere==101)&& iChrono>0){ //Touche E
             Jeu.DescenteInstantane();
-            //System.out.println("descente instantané");
             GraphiqueTerrain.repaint();
-            //Defilement.start();
         }
 
     }
@@ -259,7 +240,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         // Méthode obligatoire pour que le keyListener fonctionne 
         // Vide car on ne s'en sert pas ici   
     }
-    public void ScoreMax(){
+    public void ScoreMax(){ //Méthode calculant le meilleur score et celui qui l'a fait 
         File doc = new File("score.txt");
         
         try {

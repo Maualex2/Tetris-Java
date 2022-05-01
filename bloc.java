@@ -1,6 +1,6 @@
 import java.awt.Color;
 
-public class bloc {
+public class bloc { // Bloc composant le terrain de jeu
     Color couleur;
     boolean vide;
 
