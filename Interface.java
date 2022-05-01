@@ -172,8 +172,18 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
             
         }
         if(e.getSource()== Defilement){ // Fait défiler les pièces
-            Jeu.descendre();
-            GraphiqueListedAttente.repaint();
+           // Jeu.descendre();
+           // GraphiqueListedAttente.repaint();
+           if(IA.isIaEngaged()){
+            IA.joue1Coup();
+            Jeu.DescenteInstantane();
+            }
+        
+            else{
+         Jeu.descendre();
+        GraphiqueListedAttente.repaint();
+
+        }
 
             if (Jeu.perdu()){
                 Defilement.stop();
