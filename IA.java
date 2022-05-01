@@ -1,6 +1,13 @@
 public class IA {
     TerrainDeJeu Jeu;
 
+    public boolean iaEngaged = false;
+
+    public boolean isIaEngaged() {
+        return iaEngaged;
+    }
+
+
     public IA(TerrainDeJeu Terrain) {
         this.Jeu = Terrain;
     }
@@ -11,6 +18,7 @@ public class IA {
             int meilleureEvaluation = -9999;
             int evaluation;
             TerrainDeJeu copieTerrain;
+            iaEngaged = true;
 
             for (int nbRotationsDroite = 0; nbRotationsDroite <= 3; ++nbRotationsDroite) { //Iterere toutes les rotations possibles
                 
@@ -48,7 +56,7 @@ public class IA {
             for (int i = 0; i < meilleurNbDeplacementsDroite; i++) {
                 Jeu.bougerDroite();
             }
-            Jeu.DescenteInstantane();
+            //Jeu.DescenteInstantane();
         }
 
     public int evaluation(TerrainDeJeu f) {
