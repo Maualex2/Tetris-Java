@@ -136,22 +136,20 @@ public class TerrainDeJeu {
             
         } finally {
             if (libre){
-              EnJeu.descendre();
+                EnJeu.descendre();
             }else{
-                    try{
-                        for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
-                            Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]]=new bloc(EnJeu.couleur, false);
-                        }
-                    }catch(Exception e){
-                            perdu();
-                    }finally{
-                        ajouterForme();
-                        LigneComplete();
+                try{
+                    for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
+                        Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]]=new bloc(EnJeu.couleur, false);
                     }
-                
+                }catch(Exception e){
+                    perdu();
+                }finally{
+                    ajouterForme();
+                    LigneComplete();
+                }
             }
         }
-        
     }
 
     
