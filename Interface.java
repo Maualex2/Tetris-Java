@@ -6,7 +6,6 @@ import java.nio.file.*;
 import javax.sound.sampled.*;
 import static java.nio.file.StandardOpenOption.*;
 
-
 public class Interface extends JFrame implements ActionListener,KeyListener{
     JPanel GraphiqueTerrain;
     JPanel GraphiqueListedAttente;
@@ -34,7 +33,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     Icon logoIcon;
     Icon scoreIcon;
     
-
     public Interface(TerrainDeJeu jeu,IA IA){
         super("Tetris");
         this.IA=IA;
@@ -45,9 +43,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         niveau=0;
         ScoreMax=0;
         ScoreMax();
-        
-       Icon startIcon = new ImageIcon("./multimedia/playN2.png");
-       Icon pauseIcon = new ImageIcon("./multimedia/pauseN2.png");
+	
+	Icon startIcon = new ImageIcon("./multimedia/playN2.png");
+        Icon pauseIcon = new ImageIcon("./multimedia/pauseN2.png");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -133,7 +131,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         
         this.add(Page);
 
-
         //Clavier permet de suivre le clavier sur toute la fenetre
         this.setFocusable(true);
         this.setFocusTraversalKeysEnabled(false);
@@ -141,7 +138,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 
         //Rend visible la fenetre 
         setVisible(true);
-
     }
 
     public void actionPerformed(ActionEvent e){
@@ -237,17 +233,14 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         }
 
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){
-            //Defilement.stop();
-            
+            //Defilement.stop();  
     
            IA.joue1Coup();
             //System.out.println("coup IA");
     
             GraphiqueTerrain.repaint();
         
-            
             //Defilement.start();
-      
         }
 
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){ //Touche A

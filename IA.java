@@ -7,7 +7,6 @@ public class IA {
         return iaEngaged;
     }
 
-
     public IA(TerrainDeJeu Terrain) {
         this.Jeu = Terrain;
     }
