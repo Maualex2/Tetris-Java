@@ -23,6 +23,7 @@ public class TerrainDeJeu {
         FormeEnAttente = new forme(this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size())));
         EnJeu = new forme(this.FormeStandard.get((int)(Math.random()*this.FormeStandard.size())));       
     }
+    
     public TerrainDeJeu(TerrainDeJeu copie){ //Copie pour l'IA
         Terrain = new bloc[12][21]; // ligne et colonne
         for (int i = 0; i < Terrain.length; i++) {
@@ -35,7 +36,6 @@ public class TerrainDeJeu {
         FormeEnAttente = new forme(copie.FormeEnAttente);
         points=copie.points;
     }
-
 
     public void LigneComplete(){ // parcourt le tableau et compte les blocs sur une seule ligne
         int bonus = 0;
@@ -90,11 +90,11 @@ public class TerrainDeJeu {
                     }
             }
         } catch ( Exception e ) {
-          libre=false; 
+           libre=false; 
         } finally {
-          if (libre){
+           if (libre){
               EnJeu.droite();
-            }
+           }
         }
     }
 
