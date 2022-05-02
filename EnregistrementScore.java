@@ -53,9 +53,7 @@ public class EnregistrementScore extends JFrame implements ActionListener{
             if (e.getSource() == Val) {
                 nom=Field.getText();
                 enregistrer();
-
-            }
-            
+            } 
         }
         
         public void enregistrer(){ //Ecrit dans le fichier txt
