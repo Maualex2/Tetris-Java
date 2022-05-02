@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+
 public class GraphiqueListedAttente extends JPanel{
     public TerrainDeJeu Jeu;
      
