@@ -6,7 +6,6 @@ import java.io.*;
 import java.nio.file.*;
 import static java.nio.file.StandardOpenOption.*;
 
-
 public class EnregistrementScore extends JFrame implements ActionListener{
         int Score;
         String Date;
