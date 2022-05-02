@@ -27,7 +27,7 @@ public class IA {
                 
                     copieTerrain = new TerrainDeJeu(Jeu);// Creer une copie du Terrain
                     // Teste le coup sur la copie du controleur
-                    
+                    copieTerrain.descendre();
                     for (int i = 0; i < nbRotationsDroite; ++i) {
                         copieTerrain.tourner();
                         //System.out.println(copieControleurPlateau.EnJeu.Coordonnees[1][0]);
@@ -48,7 +48,7 @@ public class IA {
                     }
                 }
             }
-            
+            Jeu.descendre();
             for (int i = 0; i < meilleurNbRotationsDroite; i++) {
                 Jeu.tourner();
             }
