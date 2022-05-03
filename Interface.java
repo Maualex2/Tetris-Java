@@ -182,7 +182,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
                 EnregistrementScore i = new EnregistrementScore(Jeu.points);
             }
             GraphiqueTerrain.repaint();
-            if(iChrono%20==0 && niveau!=16){ // Permet d'accelerer la chute des pièces en fonction du temps
+            if(iChrono%20==0 && niveau!=18){ // Permet d'accelerer la chute des pièces en fonction du temps
                 niveau++;
                 Defilement = new Timer(700-niveau*30, this);
                 Defilement.start();
