@@ -19,9 +19,9 @@ public class AffichageScore extends JFrame{
         try {
             input = Files.newInputStream(chemin);
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-            String s = null;
-            while(reader.readLine() != null){
-                Texte=Texte+reader.readLine()+"\n";
+            String s;
+            while((s=reader.readLine()) != null){
+                Texte=Texte+s+"\n";
             }
             input.close();
         } catch (IOException e) {
