@@ -68,7 +68,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         //Bouton Score
         ScoreH= new JButton("<html>Historique <br> des scores<html>");
         ScoreH.setLayout(null);
-        ScoreH.setBounds(150,0,100,60);
+        ScoreH.setBounds(25,330,200,40);
         ScoreH.setBackground(Color.RED);
         ScoreH.addActionListener(this);
         Stat.add(ScoreH);
