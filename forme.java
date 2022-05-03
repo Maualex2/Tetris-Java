@@ -1,6 +1,6 @@
 import java.awt.Color;
+
 public class forme{
-    
     public Color couleur;
     public int[][] Coordonnees; // premiere colonne abscisse, 2eme colonne ordonnee
     public int[] origine;

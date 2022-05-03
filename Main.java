@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.util.LinkedList;
+
 public class Main {
     public static void main(String[] args) {
         // création des formes utilisées

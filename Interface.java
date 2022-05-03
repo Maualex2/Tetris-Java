@@ -6,7 +6,6 @@ import java.nio.file.*;
 import javax.sound.sampled.*;
 import static java.nio.file.StandardOpenOption.*;
 
-
 public class Interface extends JFrame implements ActionListener,KeyListener{
     JPanel GraphiqueTerrain;
     JPanel GraphiqueListedAttente;
@@ -34,7 +33,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     Icon logoIcon;
     Icon scoreIcon;
     
-
     public Interface(TerrainDeJeu jeu,IA IA){
         super("Tetris");
         this.IA=IA;
@@ -45,9 +43,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         niveau=0;
         ScoreMax=0;
         ScoreMax();
-        
-       Icon startIcon = new ImageIcon("./multimedia/playN2.png");
-       Icon pauseIcon = new ImageIcon("./multimedia/pauseN2.png");
+	
+	    Icon startIcon = new ImageIcon("./multimedia/playN2.png");
+        Icon pauseIcon = new ImageIcon("./multimedia/pauseN2.png");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -78,7 +76,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         //Bouton Start 
         Start = new JButton(startIcon) ; 
         Stat.add(Start);
-        Start.setBounds(75,200,50,50);
+        Start.setBounds(100,200,50,50);
         Start.setLayout(null);
         Start.setBackground(Color.black); 
         Start.addActionListener(this); 
@@ -114,7 +112,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 
         //Bouton d'affichage des règles du jeu
         Regles = new JButton("Règles");
-        Regles.setBounds(30,270,150,50);
+        Regles.setBounds(50,270,150,50);
         Regles.setLayout(null);
         Regles.setBackground(Color.red);
         Regles.setFont(new Font("Arial", Font.BOLD, 25));
@@ -133,7 +131,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         
         this.add(Page);
 
-
         //Clavier permet de suivre le clavier sur toute la fenetre
         this.setFocusable(true);
         this.setFocusTraversalKeysEnabled(false);
@@ -141,54 +138,46 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
 
         //Rend visible la fenetre 
         setVisible(true);
-
     }
 
     public void actionPerformed(ActionEvent e){
    
         if (e.getSource() == Start) {
             
-              if (Chrono.isRunning()) { //chrono en route
-                    Chrono.stop(); 
-                    Defilement.stop();
-                    Musique.stopSon();
-                    Start.setIcon(new ImageIcon("./multimedia/playN2.png"));
-                  
-         } else {
-		   //démarrer le jeu
-           Musique = new Son();
-           Start.setLayout(null);
-           Start.setIcon(new ImageIcon("./multimedia/pauseN2.png"));
+            if (Chrono.isRunning()) { //chrono en route
+                Chrono.stop(); 
+                Defilement.stop();
+                Musique.stopSon();
+                Start.setIcon(new ImageIcon("./multimedia/playN2.png"));
+            } else {
+                //démarrer le jeu
+                Musique = new Son();
+                Start.setLayout(null);
+                Start.setIcon(new ImageIcon("./multimedia/pauseN2.png"));
           
-           this.requestFocus(); // redemande le focus pour le clavier 
-           Chrono.start();
-           Defilement.start();
-           affChrono.setText("Temps : "+String.valueOf(iChrono));
+                this.requestFocus(); // redemande le focus pour le clavier 
+                Chrono.start();
+                Defilement.start();
+                affChrono.setText("Temps : "+String.valueOf(iChrono));
 		    }
         }
+
         if(e.getSource()== Chrono){ //Incrémente le compteur de temps
             iChrono++;
-            affChrono.setText("Temps :"+String.valueOf(iChrono));
-            
+            affChrono.setText("Temps :"+String.valueOf(iChrono));  
         }
+
         if(e.getSource()== Defilement){ // Fait défiler les pièces
-           // Jeu.descendre();
-           // GraphiqueListedAttente.repaint();
-           if(IA.isIaEngaged()){
-            IA.joue1Coup();
-            Jeu.DescenteInstantane();
+            if(IA.isIaEngaged()){
+                IA.joue1Coup();
+                Jeu.DescenteInstantane();
+            }else{
+                Jeu.descendre();
+                GraphiqueListedAttente.repaint();
             }
-        
-            else{
-         Jeu.descendre();
-        GraphiqueListedAttente.repaint();
-
-        }
-
             if (Jeu.perdu()){
                 Defilement.stop();
                 Chrono.stop();
-                System.out.println("PERDU");
                 JOptionPane.showMessageDialog(this,"Fin de la partie "+"\n"+ "Score final ="+ Jeu.points+"\n"+ "Vous avez survécu "+iChrono+" secondes");
                 EnregistrementScore i = new EnregistrementScore(Jeu.points);
             }
@@ -200,15 +189,16 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
             }
             Score.setText("Score :" + Jeu.points); 
         }
+
         if(e.getSource() == Regles) { //Affiche la fenetre des règles
             fenetreRegles.setVisible(true);
         }
+        
         if (e.getSource()==ScoreH) { //Affiche l'historique des scores
             Historique.setVisible(true);
         }
-     }
+    }
     
-
     public void keyPressed(KeyEvent e) {
         // Méthode obligatoire pour que le keyListener fonctionne 
         // Vide car on ne s'en sert pas ici   
@@ -236,19 +226,15 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         }
 
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){
-            //Defilement.stop();
-            
+            //Defilement.stop();  
     
            IA.joue1Coup();
             //System.out.println("coup IA");
     
             GraphiqueTerrain.repaint();
         
-            
             //Defilement.start();
-      
         }
-
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){ //Touche A
             IA.joue1Coup();
             GraphiqueTerrain.repaint();
@@ -265,6 +251,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         // Méthode obligatoire pour que le keyListener fonctionne 
         // Vide car on ne s'en sert pas ici   
     }
+    
     public void ScoreMax(){ //Méthode calculant le meilleur score et celui qui l'a fait 
         File doc = new File("score.txt");
         
