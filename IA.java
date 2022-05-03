@@ -18,17 +18,16 @@ public class IA {
         TerrainDeJeu copieTerrain;
         iaEngaged = true;
 
-        for (int nbRotationsDroite = 0; nbRotationsDroite <= 3; ++nbRotationsDroite) { //Iterere toutes les rotations possibles
+        for (int nbRotationsDroite = 0; nbRotationsDroite <= 3; ++nbRotationsDroite) { // Effectue toutes les rotations possibles
                 
             for (int nbDeplacementsDroite = 0; nbDeplacementsDroite <= 12;++nbDeplacementsDroite) {
-                // Itere tous les deplacements possibles
+                // Effectue tous les deplacements possibles
                 
                 copieTerrain = new TerrainDeJeu(Jeu);// Creer une copie du Terrain
                 // Teste le coup sur la copie du controleur
                 copieTerrain.descendre();
                 for (int i = 0; i < nbRotationsDroite; ++i) {
                     copieTerrain.tourner();
-                    //System.out.println(copieControleurPlateau.EnJeu.Coordonnees[1][0]);
                 }
                 copieTerrain.miseAGauche();
                 for (int i = 0; i < nbDeplacementsDroite; ++i) {
@@ -36,9 +35,8 @@ public class IA {
                 }
                 copieTerrain.DescenteInstantane();
                 // Evalue le coup
-                    
                 evaluation = evaluation(copieTerrain);
-                // Sauvegarde le coup si meilleur
+                // Sauvegarde le meilleur coup
                 if (evaluation > meilleureEvaluation) {
                     meilleureEvaluation = evaluation;
                     meilleurNbDeplacementsDroite = nbDeplacementsDroite;
@@ -54,7 +52,7 @@ public class IA {
         for (int i = 0; i < meilleurNbDeplacementsDroite; i++) {
             Jeu.bougerDroite();
         }
-        //Jeu.DescenteInstantane();
+        
     }
 
     public int evaluation(TerrainDeJeu f) {
