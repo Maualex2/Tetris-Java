@@ -14,7 +14,7 @@ public class Son {
    ///Méthode permettant de lancer le fichier audio
 
     public void jouerSon(String cheminAcces) {
-         ///Si le fichier audio n'est pas trouvé, l'exception est gérée par le catch
+        //Si le fichier audio n'est pas trouvé, l'exception est gérée par le catch
         try {
             new File(cheminAcces);
             clip = AudioSystem.getClip();
@@ -29,7 +29,7 @@ public class Son {
     }
 
     public void stopSon() {
-	clip.stop();	
+        clip.stop();	
     }
 
 }

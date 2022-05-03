@@ -85,9 +85,9 @@ public class TerrainDeJeu {
         boolean libre=true;
         try {
             for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
-                    if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]+1][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]].vide==false){
-                        libre=false;
-                    }
+                if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]+1][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]].vide==false){
+                    libre=false;
+                }
             }
         } catch ( Exception e ) {
            libre=false; 
@@ -102,22 +102,21 @@ public class TerrainDeJeu {
         boolean libre=true;
         try {
             for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
-                    if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]-1][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]].vide==false){
-                        libre=false;
-                    }
+                if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]-1][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]].vide==false){
+                    libre=false;
+                }
             }
         } catch ( Exception e ) {
           libre=false;
         } finally {
-          if (libre==true){
+            if (libre==true){
               EnJeu.gauche();
-
             }
         }
     }
     public void miseAGauche() { // Méthode pour l'IA qui met la forme tout a gauche
         for (int z = 0; z < 12; ++z) {
-        bougerGauche();
+            bougerGauche();
         }
     }
 
@@ -125,9 +124,9 @@ public class TerrainDeJeu {
         boolean libre=true;
         try {
             for (int i = 0; i < EnJeu.Coordonnees.length; i++) {
-                    if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]+1].vide==false){
-                        libre=false;
-                    }
+                if(Terrain[EnJeu.Coordonnees[i][0]+EnJeu.origine[0]][EnJeu.Coordonnees[i][1]+EnJeu.origine[1]+1].vide==false){
+                    libre=false;
+                }
             }
         } catch ( Exception e ) {
             if(EnJeu.origine[1]>0){
@@ -159,9 +158,9 @@ public class TerrainDeJeu {
         boolean libre=true;
         try {
             for (int i = 0; i < temp.Coordonnees.length; i++) {
-                    if(Terrain[temp.Coordonnees[i][0]+temp.origine[0]][temp.Coordonnees[i][1]+temp.origine[1]].vide==false){
-                        libre=false;
-                    }
+                if(Terrain[temp.Coordonnees[i][0]+temp.origine[0]][temp.Coordonnees[i][1]+temp.origine[1]].vide==false){
+                    libre=false;
+                }
             }
         } catch ( Exception e ) {
             libre=false;

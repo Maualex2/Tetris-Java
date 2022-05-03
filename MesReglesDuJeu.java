@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MesReglesDuJeu extends JFrame{
-
     JPanel conteneur;
     JLabel logo;
     JTextArea Objectif;
@@ -11,7 +10,7 @@ public class MesReglesDuJeu extends JFrame{
     JTextArea complete;
     JTextArea perdre;
     JTextArea battezVotreScore;
-
+    
     public MesReglesDuJeu  (){
         super("Règle du Tetrinsa");
         setSize(500,700);

@@ -44,7 +44,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         ScoreMax=0;
         ScoreMax();
 	
-	Icon startIcon = new ImageIcon("./multimedia/playN2.png");
+	    Icon startIcon = new ImageIcon("./multimedia/playN2.png");
         Icon pauseIcon = new ImageIcon("./multimedia/pauseN2.png");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -144,43 +144,39 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
    
         if (e.getSource() == Start) {
             
-              if (Chrono.isRunning()) { //chrono en route
-                    Chrono.stop(); 
-                    Defilement.stop();
-                    Musique.stopSon();
-                    Start.setIcon(new ImageIcon("./multimedia/playN2.png"));
-                  
-         } else {
-		   //démarrer le jeu
-           Musique = new Son();
-           Start.setLayout(null);
-           Start.setIcon(new ImageIcon("./multimedia/pauseN2.png"));
+            if (Chrono.isRunning()) { //chrono en route
+                Chrono.stop(); 
+                Defilement.stop();
+                Musique.stopSon();
+                Start.setIcon(new ImageIcon("./multimedia/playN2.png"));
+            } else {
+                //démarrer le jeu
+                Musique = new Son();
+                Start.setLayout(null);
+                Start.setIcon(new ImageIcon("./multimedia/pauseN2.png"));
           
-           this.requestFocus(); // redemande le focus pour le clavier 
-           Chrono.start();
-           Defilement.start();
-           affChrono.setText("Temps : "+String.valueOf(iChrono));
+                this.requestFocus(); // redemande le focus pour le clavier 
+                Chrono.start();
+                Defilement.start();
+                affChrono.setText("Temps : "+String.valueOf(iChrono));
 		    }
         }
+
         if(e.getSource()== Chrono){ //Incrémente le compteur de temps
             iChrono++;
-            affChrono.setText("Temps :"+String.valueOf(iChrono));
-            
+            affChrono.setText("Temps :"+String.valueOf(iChrono));  
         }
+
         if(e.getSource()== Defilement){ // Fait défiler les pièces
-           // Jeu.descendre();
-           // GraphiqueListedAttente.repaint();
-           if(IA.isIaEngaged()){
-            IA.joue1Coup();
-            Jeu.DescenteInstantane();
+            // Jeu.descendre();
+            // GraphiqueListedAttente.repaint();
+            if(IA.isIaEngaged()){
+                IA.joue1Coup();
+                Jeu.DescenteInstantane();
+            }else{
+                Jeu.descendre();
+                GraphiqueListedAttente.repaint();
             }
-        
-            else{
-         Jeu.descendre();
-        GraphiqueListedAttente.repaint();
-
-        }
-
             if (Jeu.perdu()){
                 Defilement.stop();
                 Chrono.stop();
@@ -196,15 +192,16 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
             }
             Score.setText("Score :" + Jeu.points); 
         }
+
         if(e.getSource() == Regles) { //Affiche la fenetre des règles
             fenetreRegles.setVisible(true);
         }
+        
         if (e.getSource()==ScoreH) { //Affiche l'historique des scores
             Historique.setVisible(true);
         }
-     }
+    }
     
-
     public void keyPressed(KeyEvent e) {
         // Méthode obligatoire pour que le keyListener fonctionne 
         // Vide car on ne s'en sert pas ici   
@@ -242,7 +239,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         
             //Defilement.start();
         }
-
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){ //Touche A
             IA.joue1Coup();
             GraphiqueTerrain.repaint();
@@ -259,6 +255,7 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         // Méthode obligatoire pour que le keyListener fonctionne 
         // Vide car on ne s'en sert pas ici   
     }
+    
     public void ScoreMax(){ //Méthode calculant le meilleur score et celui qui l'a fait 
         File doc = new File("score.txt");
         
