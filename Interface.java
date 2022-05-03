@@ -226,14 +226,8 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         }
 
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){
-            //Defilement.stop();  
-    
            IA.joue1Coup();
-            //System.out.println("coup IA");
-    
             GraphiqueTerrain.repaint();
-        
-            //Defilement.start();
         }
         if((((int)caractere==97)||(int)caractere==65)&& iChrono>0){ //Touche A
             IA.joue1Coup();
