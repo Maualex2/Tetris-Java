@@ -232,7 +232,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         }
         if((((int)caractere==90)||(int)caractere==122 )&& iChrono>0){ //Touche Z
             Jeu.tourner();
-            System.out.println("tourner");
             GraphiqueTerrain.repaint();
         }
 
