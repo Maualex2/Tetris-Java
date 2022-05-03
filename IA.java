@@ -1,14 +1,13 @@
 public class IA {
     TerrainDeJeu Jeu;
-
     public boolean iaEngaged = false;
-
-    public boolean isIaEngaged() {
-        return iaEngaged;
-    }
 
     public IA(TerrainDeJeu Terrain) {
         this.Jeu = Terrain;
+    }
+    
+    public boolean isIaEngaged() {
+        return iaEngaged;
     }
 
     public void joue1Coup() { //Calcul le meilleur coup sur le terrain actuel
