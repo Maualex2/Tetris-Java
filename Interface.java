@@ -168,8 +168,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         }
 
         if(e.getSource()== Defilement){ // Fait défiler les pièces
-            // Jeu.descendre();
-            // GraphiqueListedAttente.repaint();
             if(IA.isIaEngaged()){
                 IA.joue1Coup();
                 Jeu.DescenteInstantane();
@@ -180,7 +178,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
             if (Jeu.perdu()){
                 Defilement.stop();
                 Chrono.stop();
-                System.out.println("PERDU");
                 JOptionPane.showMessageDialog(this,"Fin de la partie "+"\n"+ "Score final ="+ Jeu.points+"\n"+ "Vous avez survécu "+iChrono+" secondes");
                 EnregistrementScore i = new EnregistrementScore(Jeu.points);
             }
